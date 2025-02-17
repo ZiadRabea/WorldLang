@@ -1,0 +1,8 @@
+متغير الرابط = "https://raw.githubusercontent.com/ZiadRabea/World-Programming/main/libs/"
+طباعة("lib name : ")
+متغير اسم = استقبل()+".world"
+متغير مسار = مسار_مطلق() + "/libs/" + اسم
+كتابة_ملف(مسار, قراءة_ملف(الرابط+اسم))
+
+
+

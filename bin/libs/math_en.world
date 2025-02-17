@@ -1,0 +1,42 @@
+func remainder(num, base)
+	# متغيرات and ثوابت
+	var threshold = 0.000001 
+	var max_val = 100
+	var _min = 0.0
+	var _max = 1.0
+	var _mean = (_min + _max)/2
+	
+	from i = 0 to max_val do
+		var value = base ^ _mean
+
+		if abs(value) <= threshold  do return _mean
+		
+		if value > num do 
+			var _max = _mean
+		else 
+			var _min = _mean
+		end
+		
+		var _mean = (_min + _max)/2
+	end
+	return _mean
+end
+
+func logarithm(base, num)
+#	
+#	#تفادي حالات حدوث الخطأ
+#	
+	if base < 1 do print("invalid base for the logarithm")
+	if num < 1 do print("invalid number for the logarithm")
+	var result = 0	
+	# المنطق
+	while num >= base do 
+		var num = num/base
+		var result = result + 1
+	end
+	if num != 1 do var result = result + remainder(num, base)
+	return result
+end
+
+var result = logarithm(2,11)
+print(result)		

@@ -1,0 +1,8 @@
+متغير الرابط = "https://raw.githubusercontent.com/ZiadRabea/World-Programming/main/data/"
+طباعة("Language : ")
+متغير اسم = استقبل()+"_KW.json"
+متغير مسار = مسار_مطلق() + "/data/" + اسم
+كتابة_ملف(مسار, قراءة_ملف(الرابط+اسم))
+
+
+

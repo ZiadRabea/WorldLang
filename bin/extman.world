@@ -1,0 +1,5 @@
+متغير الرابط = "https://raw.githubusercontent.com/ZiadRabea/World-Programming/main/extensions/"
+طباعة("Tool/Extension : ")
+متغير اسم = استقبل()+".world"
+متغير مسار = مسار_مطلق() + "/../extensions/" + اسم
+كتابة_ملف(مسار, قراءة_ملف(الرابط+اسم))
