@@ -7,11 +7,6 @@ from Errors import *
 from datatypes import String, List, Number, Dict
 from datatypes.Function import *
 import importlib
-#from rich.console import Console
-#from rich.markdown import Markdown
-
-#genai.configure(api_key="AIzaSyAziOtWmL9G6UiYYzxo1ewULBfCoqevh0w")
-#model = genai.GenerativeModel('gemini-1.5-flash')
 
 # INTERPRETER
 
