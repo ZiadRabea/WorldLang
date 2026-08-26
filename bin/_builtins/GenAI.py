@@ -6,10 +6,11 @@ import google.generativeai as genai
 from rich.console import Console
 from rich.markdown import Markdown
 
+import os 
 ####################
 # Constants
 ####################
-genai.configure(api_key="AIzaSyAziOtWmL9G6UiYYzxo1ewULBfCoqevh0w")
+genai.configure(api_key=os.environ.get("GenAI_API_Key"))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 class deco:
