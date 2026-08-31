@@ -104,7 +104,7 @@ WorldLang 是一个用 Python 构建的开源解释器，旨在消除编程中�
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/jabar-reda/WorldLang.git
+git clone https://github.com/ZiadRabea/WorldLang.git
 cd WorldLang
 
 # 2. (Recommended) Create and activate a virtual environment
