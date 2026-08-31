@@ -105,7 +105,7 @@ WorldLangはPythonで構築されたオープンソースのインタープリ�
 
 ```bash
 # 1. リポジトリをクローン
-git clone https://github.com/jabar-reda/WorldLang.git
+git clone https://github.com/ZiadRabea/WorldLang.git
 cd WorldLang
 
 # 2. （推推奨）仮想環境を作成して有効化

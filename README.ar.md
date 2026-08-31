@@ -104,7 +104,7 @@ WorldLang هو مترجم مفتوح المصدر مبني بلغة Python يز�
 
 ```bash
 # 1. استنساخ المستودع
-git clone https://github.com/jabar-reda/WorldLang.git
+git clone https://github.com/ZiadRabea/WorldLang.git
 cd WorldLang
 
 # 2. (موصى به) إنشاء وتفعيل بيئة افتراضية
