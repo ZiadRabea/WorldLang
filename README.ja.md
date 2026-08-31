@@ -4,12 +4,30 @@
   <img src="images/world.png" alt="WorldLang ロゴ" width="200">
 </p>
 
+<p align="center">
+  <a href="README.md">English</a> |
+  <a href="README.ar.md">العربية</a> |
+  <a href="README.fr.md">Français</a> |
+  <a href="README.es.md">Español</a> |
+  <a href="README.de.md">Deutsch</a> |
+  <a href="README.zh.md">中文</a> |
+  <strong>日本語</strong>
+</p>
+
 **ネイティブ言語でコードを記述・実行できる多言語プログラミング言語。**
 
 <p align="center">
-  [![GitHub ライセンス](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
-  [![VSCode 拡張機能](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
-  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+  <a href="https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ZiadRabea/WorldLang" alt="GitHub ライセンス">
+  </a>
+  <br>
+  <a href="https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn">
+    <img src="https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg" alt="VSCode 拡張機能">
+  </a>
+  <br>
+  <a href="https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation">
+    <img src="https://img.shields.io/badge/ResearchGate-preprint-brightgreen" alt="ResearchGate">
+  </a>
 </p>
 
 **リソースとリンク:**

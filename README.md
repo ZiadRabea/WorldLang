@@ -4,12 +4,29 @@
   <img src="images/world.png" alt="WorldLang Logo" width="200">
 </p>
 
+<p align="center">
+  <strong>English</strong> |
+  <a href="README.ar.md">العربية</a> |
+  <a href="README.fr.md">Français</a> |
+  <a href="README.es.md">Español</a> |
+  <a href="README.de.md">Deutsch</a> |
+  <a href="README.zh.md">中文</a>
+</p>
+
 **A multilingual programming language that lets you write and run code in your native language.**
 
 <p align="center">
-  [![GitHub License](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
-  [![VSCode Extension](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
-  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+  <a href="https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ZiadRabea/WorldLang" alt="GitHub License">
+  </a>
+  <br>
+  <a href="https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn">
+    <img src="https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg" alt="VSCode Extension">
+  </a>
+  <br>
+  <a href="https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation">
+    <img src="https://img.shields.io/badge/ResearchGate-preprint-brightgreen" alt="ResearchGate">
+  </a>
 </p>
 
 **Resources & Links:**
