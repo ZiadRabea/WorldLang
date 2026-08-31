@@ -1,6 +1,29 @@
 # WorldLang
 
+<p align="center">
+  <img src="images/world.png" alt="WorldLang ロゴ" width="200">
+</p>
+
 **ネイティブ言語でコードを記述・実行できる多言語プログラミング言語。**
+
+<p align="center">
+  [![GitHub ライセンス](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
+  [![VSCode 拡張機能](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
+  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+</p>
+
+**リソースとリンク:**
+
+* 📖 **[公式ドキュメント](https://ziadrabea.github.io/WorldDocs)**
+  * 🚀 [はじめに](https://ziadrabea.github.io/WorldDocs/installation.html)
+  * 📚 [言語リファレンス](https://ziadrabea.github.io/WorldDocs/features.html)
+  * 🌍 [対応言語](https://ziadrabea.github.io/WorldDocs/languages.html)
+  * 🤝 [コントリビューションガイド](https://ziadrabea.github.io/WorldDocs/guide.html)
+* 🌐 **[公式ウェブサイト](https://ziadrabea.github.io/worldlanguage)**
+* 💬 **[コミュニティに参加](https://flow.daisyscript.com)**
+* 🔬 **[学術プレプリント (ResearchGate)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)**
+* 🧩 **[WorldLangEN VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
+* 👤 **メンテナー:** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [メール](mailto:zidr2005@gmail.com))
 
 WorldLangはPythonで構築されたオープンソースのインタープリターで、プログラミングにおける言語障壁を取り除きます。英語のキーワードを暗記する代わりに、選択した言語のネイティブ構文を使用してコードを記述します — アラビア語、フランス語、日本語、その他18の言語 — エンジンはカスタム Lexer → Parser → Runtime パイプラインを通じてトークン化し、実行します。
 
@@ -224,7 +247,3 @@ WorldLangはオープンソースでコミュニティ主導のプロジェク�
 ## ライセンス
 
 WorldLangは [MITライセンス](LICENSE) の下で公開されています。
-
----
-
-*運営: Ziad Rabea. コアアーキテクト — 詳細な帰属情報は [LICENSE](LICENSE) を参照。*

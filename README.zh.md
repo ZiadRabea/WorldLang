@@ -1,6 +1,29 @@
 # WorldLang
 
+<p align="center">
+  <img src="images/world.png" alt="WorldLang 标志" width="200">
+</p>
+
 **一种多语言编程语言，允许您使用母体语言编写和运行代码。**
+
+<p align="center">
+  [![GitHub 许可证](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
+  [![VSCode 扩展](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
+  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+</p>
+
+**资源与链接：**
+
+* 📖 **[官方文档](https://ziadrabea.github.io/WorldDocs)**
+  * 🚀 [快速入门](https://ziadrabea.github.io/WorldDocs/installation.html)
+  * 📚 [语言参考](https://ziadrabea.github.io/WorldDocs/features.html)
+  * 🌍 [支持的语言](https://ziadrabea.github.io/WorldDocs/languages.html)
+  * 🤝 [贡献指南](https://ziadrabea.github.io/WorldDocs/guide.html)
+* 🌐 **[官方网站](https://ziadrabea.github.io/worldlanguage)**
+* 💬 **[加入社区](https://flow.daisyscript.com)**
+* 🔬 **[学术预印本 (ResearchGate)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)**
+* 🧩 **[WorldLangEN VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
+* 👤 **维护者：** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [邮箱](mailto:zidr2005@gmail.com))
 
 WorldLang 是一个用 Python 构建的开源解释器，旨在消除编程中的语言障碍。您无需记忆英语关键字，而是使用母体语法编写代码——支持阿拉伯语、法语、日语等 21 种语言——引擎通过自定义的 Lexer → Parser → Runtime 管道对其进行词法分析和执行。
 
@@ -224,7 +247,3 @@ WorldLang 是一个开源的社区驱动项目。欢迎以多种形式参与贡�
 ## 许可证
 
 WorldLang 在 [MIT 许可证](LICENSE) 下发布。
-
----
-
-*由 Ziad Rabea 维护。核心架构师 — 完整致谢请参阅 [LICENSE](LICENSE)。*

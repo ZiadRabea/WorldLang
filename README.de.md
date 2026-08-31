@@ -1,6 +1,29 @@
 # WorldLang
 
+<p align="center">
+  <img src="images/world.png" alt="WorldLang-Logo" width="200">
+</p>
+
 **Eine mehrsprachige Programmiersprache, mit der Sie Code in Ihrer Muttersprache schreiben und ausführen können.**
+
+<p align="center">
+  [![GitHub-Lizenz](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
+  [![VSCode-Erweiterung](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
+  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+</p>
+
+**Ressourcen und Links:**
+
+* 📖 **[Offizielle Dokumentation](https://ziadrabea.github.io/WorldDocs)**
+  * 🚀 [Erste Schritte](https://ziadrabea.github.io/WorldDocs/installation.html)
+  * 📚 [Sprachreferenz](https://ziadrabea.github.io/WorldDocs/features.html)
+  * 🌍 [Unterstützte Sprachen](https://ziadrabea.github.io/WorldDocs/languages.html)
+  * 🤝 [Beitragsanleitung](https://ziadrabea.github.io/WorldDocs/guide.html)
+* 🌐 **[Offizielle Website](https://ziadrabea.github.io/worldlanguage)**
+* 💬 **[Der Community beitreten](https://flow.daisyscript.com)**
+* 🔬 **[Akademischer Preprint (ResearchGate)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)**
+* 🧩 **[WorldLangEN VS-Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
+* 👤 **Betreuer:** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [E-Mail](mailto:zidr2005@gmail.com))
 
 WorldLang ist ein Open-Source-Interpreter, der in Python geschrieben wurde und die Sprachbarriere in der Programmierung beseitigt. Anstatt sich englische Schlüsselwörter zu merken, schreiben Sie Code mit nativer Syntax – Arabisch, Französisch, Japanisch und 18 weitere Sprachen – und die Engine tokenisiert und führt ihn über eine benutzerdefinierte Lexer → Parser → Runtime-Pipeline aus.
 
@@ -224,7 +247,3 @@ Um beizutragen:
 ## Lizenz
 
 WorldLang wird unter der [MIT-Lizenz](LICENSE) veröffentlicht.
-
----
-
-*Pflege durch Ziad Rabea. Kernarchitekt — siehe [Lizenz](LICENSE) für vollständige Zuordnung.*

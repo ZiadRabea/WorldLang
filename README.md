@@ -1,6 +1,29 @@
 # WorldLang
 
+<p align="center">
+  <img src="images/world.png" alt="WorldLang Logo" width="200">
+</p>
+
 **A multilingual programming language that lets you write and run code in your native language.**
+
+<p align="center">
+  [![GitHub License](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
+  [![VSCode Extension](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
+  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+</p>
+
+**Resources & Links:**
+
+* 📖 **[Official Documentation](https://ziadrabea.github.io/WorldDocs)**
+  * 🚀 [Getting Started](https://ziadrabea.github.io/WorldDocs/installation.html)
+  * 📚 [Language Reference](https://ziadrabea.github.io/WorldDocs/features.html)
+  * 🌍 [Supported Languages](https://ziadrabea.github.io/WorldDocs/languages.html)
+  * 🤝 [Contributing Guide](https://ziadrabea.github.io/WorldDocs/guide.html)
+* 🌐 **[Official Website](https://ziadrabea.github.io/worldlanguage)**
+* 💬 **[Join the Community](https://flow.daisyscript.com)**
+* 🔬 **[Academic Pre-print (ResearchGate)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)**
+* 🧩 **[WorldLangEN VS Code Extension](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
+* 👤 **Maintainer:** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [Email](mailto:zidr2005@gmail.com))
 
 WorldLang is an open-source interpreter built in Python that removes the language barrier in programming. Instead of memorizing English keywords, you write code using native syntax — Arabic, French, Japanese, and 18 more languages — and the engine tokenizes and executes it through a custom Lexer → Parser → Runtime pipeline.
 
@@ -224,7 +247,3 @@ To contribute:
 ## License
 
 WorldLang is released under the [MIT License](LICENSE).
-
----
-
-*Maintained by Ziad Rabea. Core Architect — see [LICENSE](LICENSE) for full attribution.*

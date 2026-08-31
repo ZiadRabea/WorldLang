@@ -1,6 +1,29 @@
 # WorldLang
 
+<p align="center">
+  <img src="images/world.png" alt="Logo de WorldLang" width="200">
+</p>
+
 **Un lenguaje de programación multilingüe que te permite escribir y ejecutar código en tu idioma nativo.**
+
+<p align="center">
+  [![Licencia GitHub](https://img.shields.io/github/license/ZiadRabea/WorldLang)](https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE)
+  [![Extensión VSCode](https://vsmarketplacebadges.dev/version-short/worldlangteam.WorldEn.svg)](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)
+  [![ResearchGate](https://img.shields.io/badge/ResearchGate-preprint-brightgreen)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)
+</p>
+
+**Recursos y enlaces:**
+
+* 📖 **[Documentación oficial](https://ziadrabea.github.io/WorldDocs)**
+  * 🚀 [Primeros pasos](https://ziadrabea.github.io/WorldDocs/installation.html)
+  * 📚 [Referencia del lenguaje](https://ziadrabea.github.io/WorldDocs/features.html)
+  * 🌍 [Idiomas compatibles](https://ziadrabea.github.io/WorldDocs/languages.html)
+  * 🤝 [Guía de contribución](https://ziadrabea.github.io/WorldDocs/guide.html)
+* 🌐 **[Sitio web oficial](https://ziadrabea.github.io/worldlanguage)**
+* 💬 **[Únete a la comunidad](https://flow.daisyscript.com)**
+* 🔬 **[Pre-publicación académica (ResearchGate)](https://www.researchgate.net/publication/377782413_A_Multilingual_Approach_with_Built-in_Code_Translation_and_Dynamic_Keyword_Importation)**
+* 🧩 **[Extensión de VS Code WorldLangEN](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
+* 👤 **Mantenedor:** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [Correo](mailto:zidr2005@gmail.com))
 
 WorldLang es un intérprete de código abierto construido en Python que elimina la barrera del idioma en la programación. En lugar de memorizar palabras clave en inglés, escribes código usando sintaxis nativa — árabe, francés, japonés y 18 idiomas más — y el motor lo tokeniza y ejecuta a través de un pipeline personalizado de Lexer → Parser → Runtime.
 
@@ -224,7 +247,3 @@ Para contribuir:
 ## Licencia
 
 WorldLang se publica bajo la [Licencia MIT](LICENSE).
-
----
-
-*Mantenido por Ziad Rabea. Arquitecto Principal — ver [LICENSE](LICENSE) para la atribución completa.*
