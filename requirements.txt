@@ -1,0 +1,26 @@
+# Required dependencies
+requests
+
+# Optional dependencies for built-in libraries
+# Install these if you use the corresponding built-in features.
+
+# _builtins/Image.py - image processing
+Pillow
+
+# _builtins/Graph.py - graphing
+matplotlib
+numpy
+
+# _builtins/Controls.py - mouse/keyboard controls
+pyautogui
+
+# _builtins/Serial.py - serial communication
+pyserial
+
+# _builtins/Speech.py - text-to-speech and speech recognition
+pyttsx3
+SpeechRecognition
+
+# _builtins/GenAI.py - AI generation with markdown display
+google-generativeai
+rich

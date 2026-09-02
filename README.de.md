@@ -10,7 +10,8 @@
   <a href="README.fr.md">Français</a> |
   <a href="README.es.md">Español</a> |
   <strong>Deutsch</strong> |
-  <a href="README.zh.md">中文</a>
+  <a href="README.zh.md">中文</a> |
+  <a href="README.ja.md">日本語</a>
 </p>
 
 **Eine mehrsprachige Programmiersprache, mit der Sie Code in Ihrer Muttersprache schreiben und ausführen können.**
