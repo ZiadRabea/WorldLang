@@ -189,31 +189,25 @@ BuiltInFunction.execute_system.infinite = False
 BuiltInFunction.execute_system.accept_none = False
 
 BuiltInFunction.chdir = BuiltInFunction("chdir")
-global_symbol_table.set(f"{data_dict['chdir']}", BuiltInFunction.chdir)
-
 BuiltInFunction.mkdir = BuiltInFunction("mkdir")
-global_symbol_table.set(f"{data_dict['mkdir']}", BuiltInFunction.mkdir)
-
 BuiltInFunction.visit_url = BuiltInFunction("visit_url")
-global_symbol_table.set(f"{data_dict['visit']}", BuiltInFunction.visit_url)
-
 BuiltInFunction.processor = BuiltInFunction("processor")
-global_symbol_table.set(f"{data_dict['processor']}", BuiltInFunction.processor)
-
 BuiltInFunction.os = BuiltInFunction("platform")
-global_symbol_table.set(f"{data_dict['os']}", BuiltInFunction.os)
-
 BuiltInFunction.architecture = BuiltInFunction("machine")
-global_symbol_table.set(f"{data_dict['architecture']}", BuiltInFunction.architecture)
-
 BuiltInFunction.list_dir = BuiltInFunction("list_dir")
-global_symbol_table.set(f"{data_dict['list_dir']}", BuiltInFunction.list_dir)
-
 BuiltInFunction.is_dir = BuiltInFunction("is_dir")
-global_symbol_table.set(f"{data_dict['is_dir']}", BuiltInFunction.is_dir)
-
 BuiltInFunction.move = BuiltInFunction("move")
-global_symbol_table.set(f"{data_dict['move']}", BuiltInFunction.move)
-
 BuiltInFunction.system = BuiltInFunction("system")
-global_symbol_table.set(f"{data_dict['system']}", BuiltInFunction.system)
+
+def append_to_global_symbol_table(data_dict):
+
+    global_symbol_table.set(f"{data_dict['system']}", BuiltInFunction.system)
+    global_symbol_table.set(f"{data_dict['chdir']}", BuiltInFunction.chdir)
+    global_symbol_table.set(f"{data_dict['mkdir']}", BuiltInFunction.mkdir)
+    global_symbol_table.set(f"{data_dict['visit']}", BuiltInFunction.visit_url)
+    global_symbol_table.set(f"{data_dict['processor']}", BuiltInFunction.processor)
+    global_symbol_table.set(f"{data_dict['os']}", BuiltInFunction.os)
+    global_symbol_table.set(f"{data_dict['architecture']}", BuiltInFunction.architecture)
+    global_symbol_table.set(f"{data_dict['list_dir']}", BuiltInFunction.list_dir)
+    global_symbol_table.set(f"{data_dict['is_dir']}", BuiltInFunction.is_dir)
+    global_symbol_table.set(f"{data_dict['move']}", BuiltInFunction.move)

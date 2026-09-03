@@ -8,13 +8,17 @@ import sys
 import requests
 import json
 import time
-from Tokens import data_dict, app_path
-
+import importlib
 Number.null = Number(0)
 String.none = String("")
 Number.false = Number(0)
 Number.true = Number(1)
 Number.math_PI = Number(3.141592653589793)
+
+if getattr(sys, 'frozen', False):
+    app_path = os.path.dirname(sys.executable)
+else:
+    app_path = os.path.dirname(os.path.abspath(__file__))
 
 class CustomListEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -77,11 +81,12 @@ class BaseFunction(Value):
         if res.should_return(): return res
         self.populate_args(infinite, arg_names, args, exec_ctx)
         return res.success(None)
-
-
+      
 class BuiltInFunction(BaseFunction):
-    def __init__(self, name):
+    def __init__(self, name, data_dict=None, runner=None):
         super().__init__(name)
+        self.data_dict = data_dict
+        self.runner = runner
 
     def execute(self, args):
         res = RTResult()
@@ -102,7 +107,7 @@ class BuiltInFunction(BaseFunction):
         raise Exception(f'No execute_{self.name} method defined')
 
     def copy(self):
-        copy = BuiltInFunction(self.name)
+        copy = BuiltInFunction(self.name, self.data_dict, self.runner)
         copy.set_context(self.context)
         copy.set_pos(self.pos_start, self.pos_end)
         return copy
@@ -570,86 +575,285 @@ class BuiltInFunction(BaseFunction):
     execute_speak.infinite = False
     execute_speak.accept_none = False
 
+    def execute_exec(self, exec_ctx):
+        code = exec_ctx.symbol_table.get('code')
+        if not isinstance(code, String):
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                "code must be a string",
+                exec_ctx
+            ))
+        run("<stdin>", code.value)
+        return RTResult().success(String.none)
 
-BuiltInFunction.print = BuiltInFunction("print")
-BuiltInFunction.print_ret = BuiltInFunction("print_ret")
-BuiltInFunction.input = BuiltInFunction("input")
-BuiltInFunction.input_int = BuiltInFunction("input_int")
-BuiltInFunction.clear = BuiltInFunction("clear")
-BuiltInFunction.is_number = BuiltInFunction("is_number")
-BuiltInFunction.is_string = BuiltInFunction("is_string")
-BuiltInFunction.is_dict = BuiltInFunction("is_dict")
-BuiltInFunction.is_list = BuiltInFunction("is_list")
-BuiltInFunction.is_function = BuiltInFunction("is_function")
-BuiltInFunction.append = BuiltInFunction("append")
-BuiltInFunction.pop = BuiltInFunction("pop")
-BuiltInFunction.extend = BuiltInFunction("extend")
-BuiltInFunction.len = BuiltInFunction("len")
-BuiltInFunction.sum = BuiltInFunction("sum")
-BuiltInFunction.max = BuiltInFunction("max")
-BuiltInFunction.min = BuiltInFunction("min")
-BuiltInFunction.abs = BuiltInFunction("abs")
-BuiltInFunction.run = BuiltInFunction("run")
-# BuiltInFunction.run_ai = BuiltInFunction("run_ai")
+    execute_exec.arg_names = ['code']
+    execute_exec.infinite = False
+    execute_exec.accept_none = False
 
-BuiltInFunction.readfile = BuiltInFunction("readfile")
-BuiltInFunction.writefile = BuiltInFunction("writefile")
-BuiltInFunction.python = BuiltInFunction("python")
-BuiltInFunction.int = BuiltInFunction("int")
-BuiltInFunction.str = BuiltInFunction("str")
-BuiltInFunction.float = BuiltInFunction("float")
-BuiltInFunction.load_img = BuiltInFunction("load_img")
-BuiltInFunction.save_img = BuiltInFunction("save_img")
-BuiltInFunction.send = BuiltInFunction("send")
-BuiltInFunction.listen = BuiltInFunction("listen")
-BuiltInFunction.speak = BuiltInFunction("speak")
-BuiltInFunction.sleep = BuiltInFunction("sleep")
-BuiltInFunction.to_string = BuiltInFunction("to_string")
-BuiltInFunction.keys = BuiltInFunction("keys")
-BuiltInFunction.abspath = BuiltInFunction("abspath")
-# BuiltInFunction.generate = BuiltInFunction("generate")
-# RUN
+    def execute_eval(self, exec_ctx):
+        result, error = run("<std-in>", exec_ctx.symbol_table.get('text').value)
+        print(result)
+        return RTResult().success(result.elements[0])
+
+    execute_eval.arg_names = ['text']
+    execute_eval.infinite = False
+    execute_eval.accept_none = False
+
+    def execute_cwd(self, exec_ctx):
+        result = os.getcwd()
+        return RTResult().success(String(result))
+
+    execute_cwd.arg_names = []
+    execute_cwd.infinite = False
+    execute_cwd.accept_none = False
+
+
+    def execute_import(self, exec_ctx):
+        fn = exec_ctx.symbol_table.get("fn")
+        baseurl = "https://raw.githubusercontent.com/ZiadRabea/WorldLang/main/libs/"
+        if not isinstance(fn, String):
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                "Second argument must be string",
+                exec_ctx
+            ))
+
+        fn = fn.value
+        if ".world" in fn:
+            try:
+                with open(f"{app_path}/../libs/{fn}", "r", encoding="UTF-8") as f:
+                    script = f.read()
+            except Exception as e:
+                try:
+                    response = requests.get(f"{baseurl}{fn}")
+                    response.raise_for_status()  # Raise an exception for any unsuccessful request
+                    with open(f"{app_path}/libs/{fn}", "w", encoding="UTF-8") as f:
+                        f.write(response.text)
+                    with open(f"{app_path}/libs/{fn}", "r", encoding="UTF-8") as f:
+                        script = f.read()
+                except requests.exceptions.RequestException as e:
+                    return RTResult().failure(RTError(
+                        self.pos_start, self.pos_end,
+                        f"Failed to load script \"{fn}\"\n" + str(e),
+                        exec_ctx
+                    ))
+                    
+            print(self.runner)
+            _, error = self.runner(fn, script)
+            if error:
+                return RTResult().failure(RTError(
+                    self.pos_start, self.pos_end,
+                    f"Failed to finish executing script \"{fn}\"\n" +
+                    error.as_string(),
+                    exec_ctx
+                ))
+
+        else:
+            try: 
+                module = importlib.import_module(f"_builtins.{fn}")
+                module.append_to_global_symbol_table(self.data_dict)
+            except ImportError as e:
+                return RTResult().failure(RTError(
+                    self.pos_start, self.pos_end,
+                    f"Failed to load script \"{fn}\"\n" + str(e),
+                    exec_ctx
+                ))   
+
+        return RTResult().success(String.none)
+
+    execute_import.arg_names = ["fn"]
+    execute_import.infinite = False
+    execute_import.accept_none = False
+
+
+    def execute_run(self, exec_ctx):
+        fn = exec_ctx.symbol_table.get("fn")
+
+        if not isinstance(fn, String):
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                "Second argument must be string",
+                exec_ctx
+            ))
+
+        fn = fn.value
+
+        try:
+            with open(fn, "r", encoding="UTF-8") as f:
+                script = f.read()
+        except Exception as e:
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                f"Failed to load script \"{fn}\"\n" + str(e),
+                exec_ctx
+            ))
+        _, error = self.runner(fn, script)
+
+        if error:
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                f"Failed to finish executing script \"{fn}\"\n" +
+                error.as_string(),
+                exec_ctx
+            ))
+
+        return RTResult().success(String.none)
+
+    execute_run.arg_names = ["fn"]
+    execute_run.infinite = False
+    execute_run.accept_none = False
+
+
+    def execute_run_ext(self, exec_ctx):
+        fn = exec_ctx.symbol_table.get("fn")
+        baseurl = "https://raw.githubusercontent.com/ZiadRabea/WorldLang/main/extensions/"
+        if not isinstance(fn, String):
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                "argument must be string",
+                exec_ctx
+            ))
+
+        fn = fn.value + ".world"
+
+        try:
+            with open(f"{app_path}/libs/{fn}", "r", encoding="UTF-8") as f:
+                script = f.read()
+        except Exception as e:
+            try:
+                response = requests.get(f"{baseurl}{fn}")
+                response.raise_for_status()  # Raise an exception for any unsuccessful request
+                with open(f"{app_path}/../extensions/{fn}", "w", encoding="UTF-8") as f:
+                    f.write(response.text)
+                with open(f"{app_path}/../extensions/{fn}", "r", encoding="UTF-8") as f:
+                    script = f.read()
+            except requests.exceptions.RequestException as e:
+                return RTResult().failure(RTError(
+                    self.pos_start, self.pos_end,
+                    f"Failed to load script \"{fn}\"\n" + str(e),
+                    exec_ctx
+                ))
+
+        _, error = self.runner(fn, script)
+
+        if error:
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                f"Failed to finish executing script \"{fn}\"\n" +
+                error.as_string(),
+                exec_ctx
+            ))
+
+        return RTResult().success(String.none)
+
+    execute_run_ext.arg_names = ["fn"]
+    execute_run_ext.infinite = False
+    execute_run_ext.accept_none = False
+
+
+    def execute_exit(self, exec_ctx):
+        sys.exit()
+        return RTResult().success(String.none)
+
+    execute_exit.arg_names = []
+    execute_exit.infinite = False
+    execute_exit.accept_none = False
 
 global_symbol_table = SymbolTable()
-global_symbol_table.set(f"{data_dict['null']}", Number.null)
-global_symbol_table.set(f"{data_dict['false']}", Number.false)
-global_symbol_table.set(f"{data_dict['true']}", Number.true)
-global_symbol_table.set("MATH_PI", Number.math_PI)
-global_symbol_table.set(f"{data_dict['print']}", BuiltInFunction.print)
-global_symbol_table.set("print_ret", BuiltInFunction.print_ret)
-global_symbol_table.set(f"{data_dict['input']}", BuiltInFunction.input)
-global_symbol_table.set(f"{data_dict['int_input']}", BuiltInFunction.input_int)
-global_symbol_table.set(f"{data_dict['clear']}", BuiltInFunction.clear)
-global_symbol_table.set("cls", BuiltInFunction.clear)
-global_symbol_table.set(f"{data_dict['is_int']}", BuiltInFunction.is_number)
-global_symbol_table.set(f"{data_dict['is_str']}", BuiltInFunction.is_string)
-global_symbol_table.set(f"{data_dict['is_lst']}", BuiltInFunction.is_list)
-global_symbol_table.set(f"{data_dict['is_func']}", BuiltInFunction.is_function)
-global_symbol_table.set(f"{data_dict['append']}", BuiltInFunction.append)
-global_symbol_table.set(f"{data_dict['pop']}", BuiltInFunction.pop)
-global_symbol_table.set(f"{data_dict['extend']}", BuiltInFunction.extend)
-global_symbol_table.set(f"{data_dict['len']}", BuiltInFunction.len)
-global_symbol_table.set("world", BuiltInFunction.run)
-# global_symbol_table.set("run_ai", BuiltInFunction.run_ai)
-global_symbol_table.set(f"{data_dict['readf']}", BuiltInFunction.readfile)
-global_symbol_table.set(f"{data_dict['writef']}", BuiltInFunction.writefile)
-global_symbol_table.set(f"python", BuiltInFunction.python)
-global_symbol_table.set(f"{data_dict['sum']}", BuiltInFunction.sum)
-global_symbol_table.set(f"{data_dict['max']}", BuiltInFunction.max)
-global_symbol_table.set(f"{data_dict['min']}", BuiltInFunction.min)
-global_symbol_table.set(f"{data_dict['abs']}", BuiltInFunction.abs)
-global_symbol_table.set(f"{data_dict['int']}", BuiltInFunction.int)
-global_symbol_table.set(f"{data_dict['float']}", BuiltInFunction.int)
-global_symbol_table.set(f"{data_dict['str']}", BuiltInFunction.str)
-global_symbol_table.set(f"{data_dict['load']}", BuiltInFunction.load_img)
-global_symbol_table.set(f"{data_dict['save_img']}", BuiltInFunction.save_img)
-global_symbol_table.set(f"{data_dict['send']}", BuiltInFunction.send)
-global_symbol_table.set(f"{data_dict['listen']}", BuiltInFunction.listen)
-global_symbol_table.set(f"{data_dict['speak']}", BuiltInFunction.speak)
-global_symbol_table.set(f"{data_dict['is_dict']}", BuiltInFunction.is_dict)
-global_symbol_table.set(f"{data_dict['sleep']}", BuiltInFunction.sleep)
-global_symbol_table.set(f"{data_dict['to_string']}", BuiltInFunction.to_string)
-global_symbol_table.set(f"{data_dict['keys']}", BuiltInFunction.keys)
-global_symbol_table.set(f"{data_dict['abspath']}", BuiltInFunction.abspath)
 
+def create_global_symbol_table(data_dict, runner):
+    
 
+    BuiltInFunction.print = BuiltInFunction("print")
+    BuiltInFunction.print_ret = BuiltInFunction("print_ret")
+    BuiltInFunction.input = BuiltInFunction("input")
+    BuiltInFunction.input_int = BuiltInFunction("input_int")
+    BuiltInFunction.clear = BuiltInFunction("clear")
+    BuiltInFunction.is_number = BuiltInFunction("is_number")
+    BuiltInFunction.is_string = BuiltInFunction("is_string")
+    BuiltInFunction.is_dict = BuiltInFunction("is_dict")
+    BuiltInFunction.is_list = BuiltInFunction("is_list")
+    BuiltInFunction.is_function = BuiltInFunction("is_function")
+    BuiltInFunction.append = BuiltInFunction("append")
+    BuiltInFunction.pop = BuiltInFunction("pop")
+    BuiltInFunction.extend = BuiltInFunction("extend")
+    BuiltInFunction.len = BuiltInFunction("len")
+    BuiltInFunction.sum = BuiltInFunction("sum")
+    BuiltInFunction.max = BuiltInFunction("max")
+    BuiltInFunction.min = BuiltInFunction("min")
+    BuiltInFunction.abs = BuiltInFunction("abs")
+    BuiltInFunction.run = BuiltInFunction("run")
+
+    BuiltInFunction.readfile = BuiltInFunction("readfile")
+    BuiltInFunction.writefile = BuiltInFunction("writefile")
+    BuiltInFunction.python = BuiltInFunction("python")
+    BuiltInFunction.int = BuiltInFunction("int")
+    BuiltInFunction.str = BuiltInFunction("str")
+    BuiltInFunction.float = BuiltInFunction("float")
+    BuiltInFunction.load_img = BuiltInFunction("load_img")
+    BuiltInFunction.save_img = BuiltInFunction("save_img")
+    BuiltInFunction.send = BuiltInFunction("send")
+    BuiltInFunction.listen = BuiltInFunction("listen")
+    BuiltInFunction.speak = BuiltInFunction("speak")
+    BuiltInFunction.sleep = BuiltInFunction("sleep")
+    BuiltInFunction.to_string = BuiltInFunction("to_string")
+    BuiltInFunction.keys = BuiltInFunction("keys")
+    BuiltInFunction.abspath = BuiltInFunction("abspath")
+    BuiltInFunction.eval = BuiltInFunction("eval")
+    BuiltInFunction.exec = BuiltInFunction("exec")
+    BuiltInFunction.cwd = BuiltInFunction("cwd")
+    BuiltInFunction.importfile = BuiltInFunction("import", data_dict, runner)
+    BuiltInFunction.run = BuiltInFunction("run", data_dict, runner)
+    BuiltInFunction.run_ext = BuiltInFunction("run_ext", data_dict, runner)
+
+    BuiltInFunction.exit = BuiltInFunction("exit")
+
+    global_symbol_table.set(f"{data_dict['null']}", Number.null)
+    global_symbol_table.set(f"{data_dict['false']}", Number.false)
+    global_symbol_table.set(f"{data_dict['true']}", Number.true)
+    global_symbol_table.set("MATH_PI", Number.math_PI)
+    global_symbol_table.set(f"{data_dict['print']}", BuiltInFunction.print)
+    global_symbol_table.set("print_ret", BuiltInFunction.print_ret)
+    global_symbol_table.set(f"{data_dict['input']}", BuiltInFunction.input)
+    global_symbol_table.set(f"{data_dict['int_input']}", BuiltInFunction.input_int)
+    global_symbol_table.set(f"{data_dict['clear']}", BuiltInFunction.clear)
+    global_symbol_table.set("cls", BuiltInFunction.clear)
+    global_symbol_table.set(f"{data_dict['is_int']}", BuiltInFunction.is_number)
+    global_symbol_table.set(f"{data_dict['is_str']}", BuiltInFunction.is_string)
+    global_symbol_table.set(f"{data_dict['is_lst']}", BuiltInFunction.is_list)
+    global_symbol_table.set(f"{data_dict['is_func']}", BuiltInFunction.is_function)
+    global_symbol_table.set(f"{data_dict['append']}", BuiltInFunction.append)
+    global_symbol_table.set(f"{data_dict['pop']}", BuiltInFunction.pop)
+    global_symbol_table.set(f"{data_dict['extend']}", BuiltInFunction.extend)
+    global_symbol_table.set(f"{data_dict['len']}", BuiltInFunction.len)
+    global_symbol_table.set("world", BuiltInFunction.run)
+    global_symbol_table.set(f"{data_dict['readf']}", BuiltInFunction.readfile)
+    global_symbol_table.set(f"{data_dict['writef']}", BuiltInFunction.writefile)
+    global_symbol_table.set(f"python", BuiltInFunction.python)
+    global_symbol_table.set(f"{data_dict['sum']}", BuiltInFunction.sum)
+    global_symbol_table.set(f"{data_dict['max']}", BuiltInFunction.max)
+    global_symbol_table.set(f"{data_dict['min']}", BuiltInFunction.min)
+    global_symbol_table.set(f"{data_dict['abs']}", BuiltInFunction.abs)
+    global_symbol_table.set(f"{data_dict['int']}", BuiltInFunction.int)
+    global_symbol_table.set(f"{data_dict['float']}", BuiltInFunction.int)
+    global_symbol_table.set(f"{data_dict['str']}", BuiltInFunction.str)
+    global_symbol_table.set(f"{data_dict['load']}", BuiltInFunction.load_img)
+    global_symbol_table.set(f"{data_dict['save_img']}", BuiltInFunction.save_img)
+    global_symbol_table.set(f"{data_dict['send']}", BuiltInFunction.send)
+    global_symbol_table.set(f"{data_dict['listen']}", BuiltInFunction.listen)
+    global_symbol_table.set(f"{data_dict['speak']}", BuiltInFunction.speak)
+    global_symbol_table.set(f"{data_dict['is_dict']}", BuiltInFunction.is_dict)
+    global_symbol_table.set(f"{data_dict['sleep']}", BuiltInFunction.sleep)
+    global_symbol_table.set(f"{data_dict['to_string']}", BuiltInFunction.to_string)
+    global_symbol_table.set(f"{data_dict['keys']}", BuiltInFunction.keys)
+    global_symbol_table.set(f"{data_dict['abspath']}", BuiltInFunction.abspath)
+    global_symbol_table.set(f"{data_dict['exec']}", BuiltInFunction.exec)
+    global_symbol_table.set(f"{data_dict['eval']}", BuiltInFunction.eval)
+    global_symbol_table.set(f"{data_dict['cwd']}", BuiltInFunction.cwd)
+    global_symbol_table.set(f"{data_dict['import']}", BuiltInFunction.importfile)
+    global_symbol_table.set(f"world", BuiltInFunction.run)
+    global_symbol_table.set(f"run", BuiltInFunction.run_ext)
+
+    global_symbol_table.set(f"exit", BuiltInFunction.exit)
+
+    return global_symbol_table

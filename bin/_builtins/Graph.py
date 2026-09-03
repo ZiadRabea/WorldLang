@@ -43,7 +43,6 @@ BuiltInFunction.execute_plotting_mode.infinite = False
 BuiltInFunction.execute_plotting_mode.accept_none = False
 
 BuiltInFunction.plotting_mode = BuiltInFunction("plotting_mode")
-global_symbol_table.set(f"{data_dict['plotting_mode']}", BuiltInFunction.plotting_mode)
 
 
 @deco(BuiltInFunction)
@@ -86,4 +85,7 @@ BuiltInFunction.execute_plot.infinite = False
 BuiltInFunction.execute_plot.accept_none = False
 
 BuiltInFunction.plot = BuiltInFunction("plot")
-global_symbol_table.set(f"{data_dict['plot']}", BuiltInFunction.plot)
+
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['plotting_mode']}", BuiltInFunction.plotting_mode)
+    global_symbol_table.set(f"{data_dict['plot']}", BuiltInFunction.plot)

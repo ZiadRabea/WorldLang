@@ -1,8 +1,4 @@
-define a variable with a random number من 1 الي 10
-let activeuser be 1 
-take a number من the user
-اذا the number is equal الي the random variable, طباعة first user lost the game, otherwise, let active user be 2
-repeat the process و switch between users. دالة باقي(رقم, قاعدة)
+دالة باقي(رقم, قاعدة)
 	# متغيرات و ثوابت
 	متغير العتبة = 0.000001 
 	متغير عدد_أقصي = 100

@@ -77,5 +77,6 @@ BuiltInFunction.execute_speak.accept_none = False
 BuiltInFunction.listen = BuiltInFunction("listen")
 BuiltInFunction.speak = BuiltInFunction("speak")
 
-global_symbol_table.set(f"{data_dict['listen']}", BuiltInFunction.listen)
-global_symbol_table.set(f"{data_dict['speak']}", BuiltInFunction.speak)
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['listen']}", BuiltInFunction.listen)
+    global_symbol_table.set(f"{data_dict['speak']}", BuiltInFunction.speak)

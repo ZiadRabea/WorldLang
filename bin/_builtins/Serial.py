@@ -115,5 +115,6 @@ BuiltInFunction.execute_receive.accept_none = False
 BuiltInFunction.send = BuiltInFunction("send")
 BuiltInFunction.receive = BuiltInFunction("receive")
 
-global_symbol_table.set(f"{data_dict['receive']}", BuiltInFunction.receive)
-global_symbol_table.set(f"{data_dict['send']}", BuiltInFunction.send)
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['receive']}", BuiltInFunction.receive)
+    global_symbol_table.set(f"{data_dict['send']}", BuiltInFunction.send)

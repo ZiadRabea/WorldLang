@@ -81,5 +81,6 @@ BuiltInFunction.execute_save_img.accept_none = False
 BuiltInFunction.load_img = BuiltInFunction("load_img")
 BuiltInFunction.save_img = BuiltInFunction("save_img")
 
-global_symbol_table.set(f"{data_dict['load']}", BuiltInFunction.load_img)
-global_symbol_table.set(f"{data_dict['save_img']}", BuiltInFunction.save_img)
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['load']}", BuiltInFunction.load_img)
+    global_symbol_table.set(f"{data_dict['save_img']}", BuiltInFunction.save_img)

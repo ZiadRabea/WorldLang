@@ -1,0 +1,432 @@
+{"langs": [
+    {
+      "tag": "Arabic_KW",
+      "patterns": [
+        "متغير", "و", "او", "ليس", "اذا", "أما_اذا", "والا", "من", "الي", "خطوة", 
+        "بينما", "دالة", "نفذ", "نهاية", "ارجاع", "استمر", "توقف", "طباعة", "استقبل_رقم", 
+        "استقبل", "هل_رقم", "هل_نص", "هل_قائمة", "هل_معجم", "هل_دالة", "عدد_صحيح", "عدد_عشري", 
+        "المعرف", "لاشئ", "صحيح", "خطأ", "نظف", "اضف", "مدد", "احذف", "حجم", 
+        "قراءة_ملف", "كتابة_ملف", "استدعاء", "مجموع", "اعلي", "اقل", "قيمة_مطلقة", "نص", 
+        "تحميل", "حفظ_صورة", "ارسال", "تنفيذ", "استمع", "تحدث", "تشغيل", "نم", 
+        "لنص", "مفاتيح", "مسار_مطلق", "توليد", "استلم", "اكتب", "انقر", "عنوان_المؤشر", 
+        "ضع_المؤشر", "ضغط", "تغيير_مسار", "انشاء_مسار", "معالج", "نظام_تشغيل", "زيارة", "بنية_النظام", 
+        "قائمة_الملفات", "هل_مسار", "انقل", "افتح", "توليد_رقم_عشوائي", "مسار_العمل", "تقسيم", "يحتوي", 
+        "حروف_كبيرة", "حروف_صغيرة", "تجميل", "مخطط_بياني", "نوع_المخطط", "تبديل"
+      ],
+      "responses": ["Arabic_KW"],
+      "context_set": ""
+    },{
+      "tag": "Chinese_KW",
+      "patterns": [
+        "变量", "且", "或者", "非", "如果", "否则اگر", "否则", "从", "到", "步长", 
+        "当", "函数", "执行", "结束", "返回", "继续", "中断", "打印", "整数输入", 
+        "输入", "是整数", "是字符串", "是列表", "是字典", "是函数", "整数", "浮点数", 
+        "标识符", "空", "真", "假", "清空", "追加", "扩展", "弹出", "长度", 
+        "读取文件", "写入文件", "导入", "求和", "最大值", "最小值", "绝对值", "字符串", 
+        "加载", "保存图像", "发送", "执行", "监听", "说话", "评估", "睡眠", 
+        "转为字符串", "键", "绝对路径", "生成", "接收", "写", "点击", "鼠标位置", 
+        "设置位置", "按", "切换目录", "创建目录", "处理器", "操作系统", "访问", "架构", 
+        "目录列表", "是否目录", "移动", "系统", "生成随机", "当前工作目录", "拆分", "包含", 
+        "大写字母", "小写字母", "首字母大写", "图形", "绘图模式", "替换"
+      ],
+      "responses": ["Chinese_KW"],
+      "context_set": ""
+    },{
+      "tag": "Dutch_KW",
+      "patterns": [
+        "variabele", "en", "of", "niet", "als", "andersals", "anders", "van", "tot", "stap", 
+        "terwijl", "functie", "doe", "einde", "terug", "doorgaan", "stop", "afdrukken", "int_invoer", 
+        "invoer", "is_int", "is_tekst", "is_lijst", "is_dict", "is_functie", "int", "float", 
+        "identificatie", "nul", "waar", "onwaar", "wissen", "toevoegen", "uitbreiden", "verwijderen", "lengte", 
+        "leesf", "schrijff", "importeren", "som", "max", "min", "abs", "tekst", 
+        "laden", "beeld_opslaan", "verstuur", "uitvoeren", "luister", "spreken", "evalueren", "slapen", 
+        "naar_tekenreeks", "sleutels", "absoluut_pad", "genereren", "ontvangen", "schrijven", "klik", "muizlocatie", 
+        "stel_locatie_in", "druk", "verander_directory", "maak_directory", "processor", "besturingssysteem", "bezoek", "architectuur", 
+        "lijst_directory", "is_directory", "verplaats", "systeem", "genereer_random", "huidige_werk_directory", "splits", "bevat", 
+        "hoofdletters", "kleine_letters", "hoofdletter_groot", "plot", "plotmodus", "vervangen"
+      ],
+      "responses": ["Dutch_KW"],
+      "context_set": ""
+    },{
+      "tag": "English_KW",
+      "patterns": [
+        "var", "and", "or", "not", "if", "elif", "else", "from", "to", "step", 
+        "while", "func", "do", "end", "return", "continue", "break", "print", "int_input", 
+        "input", "is_int", "is_str", "is_lst", "is_dict", "is_func", "int", "float", 
+        "identifier", "null", "true", "false", "clear", "append", "extend", "pop", "len", 
+        "readf", "writef", "import", "sum", "max", "min", "abs", "str", 
+        "load", "save_img", "send", "exec", "listen", "speak", "eval", "sleep", 
+        "to_string", "keys", "abspath", "generate", "receive", "write", "click", "mouse_location", 
+        "set_location", "press", "chdir", "mkdir", "processor", "os", "visit", "architecture", 
+        "list_dir", "is_dir", "move", "system", "gen_random", "cwd", "split", "contains", 
+        "uppercase", "lowercase", "capitalize", "plot", "plotting_mode", "replace"
+      ],
+      "responses": ["English_KW"],
+      "context_set": ""
+    },{
+      "tag": "French_KW",
+      "patterns": [
+        "variable", "et", "ou", "non", "si", "sinon_si", "sinon", "de", "à", "pas", 
+        "tant_que", "fonc", "faire", "fin", "retour", "continuer", "arrêter", "imprimer", "entrer_entier", 
+        "entrer", "est_entier", "est_chaîne", "est_liste", "est_dict", "est_fonc", "entier", "décimal", 
+        "identifiant", "nul", "vrai", "faux", "effacer", "ajouter", "étendre", "retirer", "langueur", 
+        "lire_fichier", "écrire_fichier", "importer", "somme", "max", "min", "abs", "chaîne", 
+        "charger", "enregistrer_img", "envoyer", "éxec", "écouter", "parler", "éval", "sommeil", 
+        "en_chaîne", "clés", "chemin_absolu", "générer", "recevoir", "écrire", "cliquer", "emplacement_de_la_souris", 
+        "définir_l'emplacement", "appuyer", "changer_de_répertoire", "créer_un_répertoire", "processeur", "système", "visiter", "architecture", 
+        "lister_le_répertoire", "est_un_répertoire", "déplacer", "système", "générer_au_hasard", "répertoire_de_travail_courant", "diviser", "contient", 
+        "majuscules", "minuscules", "mettre_en_majuscule", "tracé", "mode_de_tracé", "remplacer"
+      ],
+      "responses": ["French_KW"],
+      "context_set": ""
+    },{
+      "tag": "German_KW",
+      "patterns": [
+        "variable", "und", "oder", "nicht", "wenn", "sonst_wenn", "anders", "aus", "zu", "Schritt", 
+        "während", "Funktion", "tun", "ende", "rückkehr", "fortsetzen", "unterbrechung", "drucken", "eingang", 
+        "ganzzahleingabe", "ganze_zahl", "schweben", "kennung", "ist_ganzzahl", "ist_string", "ist_die_diste", "ist_die_dict", 
+        "ist_funktion", "null", "STIMMT", "FALSCH", "sauber", "anhängen", "erweitern", "pop", "größe", 
+        "lesen_sie_die_datei", "schreiben_sie_die_datei", "anrufen", "summe", "maximal", "minimum", "absolutwert", "text", 
+        "belastung", "bild_speichern", "schicken", "ausführen", "hören", "sprechen", "anstellung", "schlafen", 
+        "bespannen", "schlüssel", "absoluter_pfad", "erzeugen", "empfangen", "schreiben", "klicken", "maus_position", 
+        "standort_setzen", "drücken", "verzeichnis_wechseln", "verzeichnis_erstellen", "prozessor", "betriebssystem", "besuchen", "architektur", 
+        "verzeichnis_auflisten", "ist_verzeichnis", "bewegen", "system", "zufällig_erzeugen", "aktuelles_arbeitsverzeichnis", "teilen", "enthält", 
+        "großbuchstaben", "kleinbuchstaben", "großschreiben", "grafik", "grafik_modus", "ersetzen"
+      ],
+      "responses": ["German_KW"],
+      "context_set": ""
+    },{
+      "tag": "Indonesian_KW",
+      "patterns": [
+        "variabel", "dan", "atau", "bukan", "jika", "kalau", "jika_tidak", "dari", "untuk", "langkah", 
+        "ketika", "fungsi", "melakukan", "akhir", "kembali", "melanjutkan", "berhenti", "mencetak", "menerima_nomor", 
+        "menerima", "adalah_nomor", "adalah_teks", "adalah_daftar", "adalah_kamus", "adalah_melakukan", "nomor", "angka_desimal", 
+        "pengidentifikasi", "batal", "benar", "palsu", "membersihkan", "menambahkan", "memperpanjang", "menghapus", "ukuran", 
+        "membaca_berkas", "menulis_file", "impor", "jumlah", "maksimum", "minimum", "nilai_mutlak", "teks", 
+        "memuat", "simpan_foto", "mengirim", "menjalankan", "mendengarkan", "berbicara", "pekerjaan", "tidur", 
+        "menjadi_string", "kunci", "jalur_mutlak", "menghasilkan", "menerima", "menulis", "klik", "lokasi_mouse", 
+        "atur_lokasi", "tekan", "ganti_direktori", "buat_direktori", "prosesor", "sistem", "kunjungi", "arsitektur", 
+        "daftar_direktori", "apakah_direktori", "pindah", "sistem", "hasilkan_acak", "direktori_kerja_sekarang", "pisahkan", "mengandung", 
+        "huruf_besar", "huruf_kecil", "buat_huruf_pertama_besar", "plot", "mode_plotting", "ganti"
+      ],
+      "responses": ["Indonesian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Italian_KW",
+      "patterns": [
+        "variabile", "e", "o", "non", "se", "altrimenti_se", "altrimenti", "da", "a", "passo", 
+        "mentre", "funzione", "fare", "fine", "ritorno", "continua", "interrompi", "stampare", "input_intero", 
+        "input", "è_intero", "è_stringa", "è_lista", "è_dizionario", "è_funzione", "intero", "virgola_mobile", 
+        "identificatore", "nullo", "vero", "falso", "pulisci", "aggiungi", "estendi", "elimina", "lunghezza", 
+        "leggif", "scrivif", "importa", "somma", "massimo", "minimo", "assoluto", "stringa", 
+        "carica", "salva_img", "invia", "esegui", "ascolta", "parla", "valuta", "dormi", 
+        "a_cadena", "claves", "ruta_absoluta", "generare", "ricevere", "scrivere", "cliccare", "posizione_del_mouse", 
+        "imposta_posizione", "premere", "cambia_directory", "crea_directory", "processore", "sistema_operativo", "visitare", "architettura", 
+        "elenco_directory", "è_directory", "muovere", "sistema", "genera_random", "directory_di_lavoro_corrente", "dividere", "contiene", 
+        "maiuscole", "minuscole", "metti_in_maiuscolo", "grafico", "modalità_di_grafico", "sostituire"
+      ],
+      "responses": ["Italian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Japanese_KW",
+      "patterns": [
+        "へんすう", "と", "また", "でない", "いう", "エルイフ", "そうでなければ", "から", "まで", "きょり", 
+        "わいる", "かんすう", "する", "おわり", "もどる", "つづける", "やめる", "ひょうじする", "にゅうりょく", "せいすうにゅうりょく", 
+        "せいすう", "しょすう", "しめし", "すうかチェック", "mojiレベルチェック", "リストチェック", "いずどくと", "かんすうチェック", "から", "はい", 
+        "いいえ", "クリアする", "ついかする", "えくすてんどする", "とる", "ながさをかえす", "ファイルをよむ", "ファイルをかく", "インポート", "さむ", 
+        "まっくす", "みん", "あぶす", "てきすと", "ろーど", "イメージをほぞんする", "おくる", "じっこうする", "きく", "はなす", 
+        "こよう", "ねる", "へんすうをすとりんぐに", "かぎ", "ぜったいぱす", "生成する", "受け取る", "書く", "クリックする", "マウスの位置", 
+        "位置を設定する", "押す", "ディレクトリを変更する", "ディレクトリを作成する", "プロセッサ", "オペレーティングシステム", "訪れる", "アーキテクチャ", "ディレクトリのリスト", "ディレクトリか", 
+        "移動する", "システム", "ランダムを生成する", "現在の作業ディレクトリ", "分割する", "含む", "大文字", "小文字", "最初の文字を大文字にする", "プロット", 
+        "プロットモード", "置き換える"
+      ],
+      "responses": ["Japanese_KW"],
+      "context_set": ""
+    },{
+      "tag": "Kazakh_KW",
+      "patterns": [
+        "премен", "және", "әлде", "жоқ", "егер", "жыныма_тисең", "егер_тағы", "дан", "үшін", "қадам", 
+        "пока", "функция", "істеу", "бітіру", "қайтару", "жалғастыру", "үзіліс", "принт", "сан_кіру", "кіру", 
+        "сан_ба", "сөз_ба", "лист_па", "сөздік_па", "функция_ма", "сан", "ой", "идентификатор", "түсүніксіз", "бұрыс", 
+        "дұрыс", "тазалау", "қосу", "көбейту", "шығу", "ұзақтығы", "егероқу", "егержазу", "импорт", "сумма", 
+        "макс", "мин", "абс", "сөз", "жүктеу", "сүйрет_сақтау", "жіберу", "орындау", "тыңдау", "сөйлеу", 
+        "бағыттау", "тұру", "тоқтап_алау", "кілттер", "percorso_assoluto", "генерациялау", "алу", "жазу", "шертү", "тышқан_орны", 
+        "орынды_орнату", "басу", "каталогты_өзгерту", "каталог_жасау", "процессор", "операциялық_жүйе", "бару", "архитектура", "каталогтарды_тізімдеу", "каталог_болу", 
+        "қозғалу", "жүйе", "кездейсоқ_генерациялау", "қазіргі_жұмыс_каталогы", "бөлу", "құрамында", "үлкен_әріптер", "кіші_әріптер", "бастапқы_әріпті_үлкен_ету", "график", 
+        "график_режимі", "ауыстыру"
+      ],
+      "responses": ["Kazakh_KW"],
+      "context_set": ""
+    },{
+      "tag": "Korean_KW",
+      "patterns": [
+        "변수", "그리고", "또는", "아니다", "만약에", "그렇지_않고_만약에", "아니면", "에서", "까지", "간격", 
+        "하는_동안", "함수", "수행", "끝", "반환", "계속", "중단", "출력", "정수_입력", "입력", 
+        "정수인지", "문자열인지", "리스트인지", "사전인지", "함수인지", "정수", "부동소수점", "식별자", "빈", "참", 
+        "거짓", "지우기", "추가", "확장", "빼기", "길이", "파일_읽기", "파일_쓰기", "가져오기", "합", 
+        "최대값", "최소값", "절대값", "문자열", "불러오기", "이미지_저장", "보내기", "실행", "듣기", "말하기", 
+        "평가", "잠자기", "문자열로_변환", "키", "절대_경로", "생성하다", "받다", "쓰기", "클릭", "마우스_위치", 
+        "위치_설정", "누르다", "디렉토리_변경", "디렉토리_생성", "프로세서", "운영체제", "방문하다", "아키텍처", "디렉토리_목록", "디렉토리인가", 
+        "이동하다", "시스템", "무작위_생성", "현재_작업_디렉토리", "나누다", "포함하다", "대문자", "소문자", "첫_글자_대문자", "그래프", 
+        "그래프_모드", "대체하다"
+      ],
+      "responses": ["Korean_KW"],
+      "context_set": ""
+    },{
+      "tag": "Persian_KW",
+      "patterns": [
+        "متغیر", "و", "یا", "نه", "اگر", "درغیراینصورتاگر", "وگرنه", "از", "تا", "گام", 
+        "تازمانیکه", "تابع", "انجام_بده", "پایان", "برگردان", "ادامه_بده", "شکست_بده", "چاپ", "ورودی_عدد_صحیح", "ورودی", 
+        "آیا_عدد", "آیا_رشته", "آیا_لیست", "آیا_دیکشنری", "آیا_تابع", "عدد_صحیح", "عدد_اعشاری", "شناسه", "نامعلوم", "درست", 
+        "غلط", "پاک_کن", "الحاق", "توسعه", "حذف", "طول", "خواندن_فایل", "نوشتن_فایل", "وارد_کردن", "جمع", 
+        "بیشترین", "کمترین", "مقدار_مطلق", "رشته", "بارگذاری", "ذخیره_تصویر", "ارسال", "اجرا", "گوش_کن", "صحبت_کن", 
+        "ارزیابی", "خواب", "به_رشته", "کلیدها", "مسیر_مطلق", "تولید", "دریافت", "نوشتن", "کلیک", "مکان_ماوس", 
+        "تنظیم_مکان", "فشردن", "تغییر_دایرکتوری", "ایجاد_دایرکتوری", "پردازنده", "سیستم_عامل", "بازدید", "معماری", "فهرست_دایرکتوری", "آیا_دایرکتوری_است", 
+        "حرکت", "سیستم", "تولید_تصادفی", "دایرکتوری_کاری_فعلی", "تقسیم", "شامل", "حروف_بزرگ", "حروف_کوچک", "حرف_اول_بزرگ", "نقشه", 
+        "حالت_نقشه", "جایگزین"
+      ],
+      "responses": ["Persian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Polish_KW",
+      "patterns": [
+        "zmienna", "i", "lub", "nie", "jezeli", "inaczej", "wpp", "od", "do", "co", 
+        "podczas", "funkcja", "rob", "koniec", "zwroc", "kontynuuj", "przerwij", "wypisz", "wejscie_int", "wejscie", 
+        "jest_int", "jest_tekst", "jest_lista", "jest_slownik", "jest_funkcja", "calkowita", "rzeczywista", "identyfikator", "pusta", "prawda", 
+        "falsz", "wyczysc", "dodaj", "rozszerz", "usun", "dlugosc", "czytajf", "piszf", "importuj", "suma", 
+        "maks", "min", "wartosc_bezwzgledna", "tekst", "laduj", "zapisz_obraz", "wyslij", "wykonaj", "sluchaj", "mow", 
+        "ewaluuj", "spij", "do_ciągu_znaków", "klucze", "ścieżka_bezwzględna", "generować", "otrzymać", "napisać", "kliknij", "lokalizacja_myszy", 
+        "ustaw_lokalizację", "naciśnij", "zmień_katalog", "utwórz_katalog", "procesor", "system_operacyjny", "odwiedź", "architektura", "lista_katalogów", "jest_katalogiem", 
+        "przenieś", "system", "generuj_losowo", "aktualny_katalog_roboczy", "podziel", "zawiera", "wielkie_litery", "małe_litery", "zrób_pierwszą_literę_wielką", "wykres", 
+        "tryb_wykresu", "zastąp"
+      ],
+      "responses": ["Polish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Portuguese_KW",
+      "patterns": [
+        "var", "e", "ou", "não", "se", "senão_se", "senão", "de", "para", "passo", 
+        "enquanto", "função", "faça", "fim", "retornar", "continuar", "quebrar", "imprimir", "entrada_int", "entrada", 
+        "é_inteiro", "é_string", "é_lista", "é_dicionario", "é_função", "inteiro", "flutuante", "identificador", "nulo", "verdadeiro", 
+        "falso", "limpar", "adicionar", "estender", "remover", "tamanho", "lerf", "escreverf", "importar", "soma", 
+        "máximo", "mínimo", "absoluto", "string", "carregar", "salvar_img", "enviar", "executar", "ouvir", "falar", 
+        "avaliar", "esperar", "para_string", "chaves", "caminho_absoluto", "gerar", "receber", "escrever", "clicar", "localização_do_mouse", 
+        "definir_localização", "pressionar", "mudar_diretorio", "criar_diretorio", "processador", "sistema", "visitar", "arquitetura", "listar_diretorio", "é_diretorio", 
+        "mover", "sistema", "gerar_aleatório", "diretorio_de_trabalho_atual", "dividir", "contém", "letras_maiusculas", "letras_minusculas", "capitalizar", "gráfico", 
+        "modo_de_gráficos", "substituir"
+      ],
+      "responses": ["Portuguese_KW"],
+      "context_set": ""
+    },{
+      "tag": "Romanian_KW",
+      "patterns": [
+        "variabila", "si", "sau", "nu", "daca", "daca_alta", "alta", "de_la", "pana_la", "pas", 
+        "cat_timp", "functie", "executa", "sfarsit", "returneaza", "continua", "opreste", "afiseaza", "int_intrare", "intrare", 
+        "este_int", "este_text", "este_lista", "este_dictionar", "este_functie", "intreg", "zecimal", "identificator", "nul", "adevarat", 
+        "fals", "sterge", "adauga", "extinde", "elimina", "lungime", "citiref", "scrieref", "importa", "suma", 
+        "max", "min", "absolut", "text", "incarca", "salveaza_img", "trimite", "asculta", "vorbeste", "evalueaza", 
+        "asteapta", "la_string", "chei", "cale_absolută", "genera", "recepționa", "scrie", "click", "locația_mouse-ului", "setați_locatia", 
+        "apăsați", "schimbați_directorul", "creați_director", "procesor", "sistem_operativ", "vizitați", "arhitectură", "lista_directoarelor", "este_director", "mutare", 
+        "sistem", "generați_aleatoriu", "director_de_lucru_curenți", "împărți", "conține", "litere_mari", "litere_mici", "transformați_prima_litere_mare", "graf", "mod_de_graf", 
+        "înlocui"
+      ],
+      "responses": ["Romanian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Russian_KW",
+      "patterns": [
+        "переменная", "и", "или", "не", "если", "иначе_если", "иначе", "от", "до", "шаг", 
+        "пока", "функция", "выполнить", "конец", "вернуть", "продолжить", "прервать", "печать", "ввод_целого", "ввод", 
+        "целое_число", "строка", "список", "словарь", "функция_ли", "целое", "вещественное", "Ожидаемый", "идентификатор", "пусто", 
+        "истина", "ложь", "очистить", "добавить", "расширить", "удалить", "длина", "новая_строка", "чтение_файла", "запись_в_файл", 
+        "импорт", "сумма", "максимум", "минимум", "абсолютное", "загрузить", "сохранить_изображение", "отправить", "слушать", "говорить", 
+        "оценить", "спать", "в_строку", "ключи", "абсолютный_путь", "генерировать", "получать", "писать", "кликнуть", "расположение_мыши", 
+        "установить_расположение", "нажмите", "сменить_каталог", "создать_каталог", "процессор", "операционная_система", "посетить", "архитектура", "список_каталогов", "является_каталогом", 
+        "переместить", "система", "генерировать_случайно", "текущий_каталог_работы", "разделить", "содержит", "заглавные_буквы", "строчные_буквы", "сделать_первую_букву_заглавной", "график", 
+        "режим_построения_графика", "заменить"
+      ],
+      "responses": ["Russian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Spanish_KW",
+      "patterns": [
+        "var", "y", "o", "no", "si", "sino_si", "sino", "desde", "a", "paso", 
+        "mientras", "func", "hacer", "fin", "retornar", "continuar", "romper", "imprimir", "entrada_int", "entrada", 
+        "es_entero", "es_cadena", "es_lista", "es_diccionario", "es_funcion", "entero", "flotante", "Esperado", "identificador", "nulo", 
+        "verdadero", "falso", "limpiar", "agregar", "extender", "eliminar", "longitud", "NUEVALINEA", "leerf", "escribirf", 
+        "importar", "suma", "maximo", "minimo", "absoluto", "cadena", "cargar", "guardar_img", "enviar", "ejecutar", 
+        "escuchar", "hablar", "evaluar", "esperar", "a_stringa", "chiavi", "percorso_assoluto", "generar", "recibir", "escribir", 
+        "clicar", "ubicación_del_mouse", "establecer_ubicación", "presionar", "cambiar_directorio", "crear_directorio", "procesador", "sistema", "visitar", "arquitectura", 
+        "listar_directorio", "es_directorio", "mover", "generar_aleatorio", "directorio_de_trabajo_actual", "dividir", "contiene", "mayúsculas", "minúsculas", "capitalizar", 
+        "gráfico", "modo_de_graficar", "reemplazar"
+      ],
+      "responses": ["Spanish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Turkish_KW",
+      "patterns": [
+        "değişken", "ve", "veya", "değil", "eğer", "ama_eğer", "aksi_halde", "itibaren", "ila", "bir_adım", 
+        "süre", "işlev", "yapmak", "son", "dönüş", "devamet", "dur", "yaz", "bir_numara_al", "almak", 
+        "numara_mı", "metin_mi", "liste_mi", "sözlük_mü", "is_func", "numara", "ondalık", "Beklenen", "tanımlayıcı", "hiç", 
+        "doğru", "yanlış", "temiz", "eklemek", "uzatmak", "silmek", "boyut", "YeniHat", "dosya_oku", "dosya_yaz", 
+        "çağırmak", "toplam", "maksimum", "minimum", "mutlak_değer", "metin", "yük", "resmi_kaydet", "göndermek", "uygulamak", 
+        "dinlemek", "konuşmak", "iş", "uyumak", "dize_dönüştür", "anahtarlar", "mutlak_yol", "oluştur", "al", "tıkla", 
+        "fare_yeri", "yeri_belirle", "bas", "dizini_değiştir", "dizin_oluştur", "işlemci", "işletim_sistemi", "ziyaret_et", "mimari", "dizin_listele", 
+        "dizin_mi", "taşımak", "sistem", "rastgele_oluştur", "geçerli_çalışma_dizini", "ayır", "içerir", "büyük_harfler", "küçük_harfler", "ilk_harf_büyük_yap", 
+        "grafik", "grafik_modu", "değiştir"
+      ],
+      "responses": ["Turkish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Ukrainian_KW",
+      "patterns": [
+        "змінна", "та", "або", "не", "якщо", "інакше_якщо", "інакше", "з", "до", "крок", 
+        "поки", "функція", "виконати", "кінець", "повернути", "продовжити", "перервати", "друкувати", "ввід_ціле_число", "ввід", 
+        "чи_це_число", "чи_це_рядок", "чи_це_список", "чи_це_словник", "чи_це_функція", "ціле_число", "дробове_число", "Очікується", "ідентифікатор", "нуль", 
+        "істина", "хиба", "очистити", "додати", "розширити", "видалити", "довжина", "новий_рядок", "читати_файл", "записати_файл", 
+        "імпортувати", "сума", "максимум", "мінімум", "абсолютне_значення", "рядок", "завантажити", "зберегти_зображення", "надіслати", "слухати", 
+        "говорити", "оцінити", "спати", "у_рядок", "ключі", "абсолютний_шлях", "генерувати", "отримувати", "писати", "клікнути", 
+        "місцезнаходження_миші", "встановити_місцезнаходження", "натисніть", "змінити_каталог", "створити_каталог", "процесор", "операційна_система", "відвідати", "архітектура", "перелік_каталогів", 
+        "є_каталогом", "перемістити", "система", "генерувати_випадкові", "поточний_каталог_роботи", "розділити", "містить", "великі_літери", "малі_літери", "зробити_першу_літеру_великою", 
+        "графік", "режим_побудови_графіків", "замінити"
+      ],
+      "responses": ["Ukrainian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Urdu_KW",
+      "patterns": [
+        "متغیر", "اور", "یا", "نہیں", "اگر", "ورنہ_اگر", "ورنہ", "سے", "تک", "قدم", 
+        "جب_تک", "فنکشن", "کریں", "ختم", "واپسی", "جاری_رکھیں", "توڑیں", "چھاپیں", "عددی_درآمد", "درآمد", 
+        "کیا_عدد", "کیا_متن", "کیا_لسٹ", "کیا_ڈکشنری", "کیا_فنکشن", "عدد", "اعشاری_عدد", "منتظرہ", "شناخت", "خالی", 
+        "سچ", "غلط", "صاف_کریں", "شامل_کریں", "توسیع_دیں", "نکالیں", "لمبائی", "نیا_لاین", "پڑھیں_فائل", "لکھیں_فائل", 
+        "درآمد_کریں", "مجموعہ", "زیادہ", "کم", "مطلق_قیمت", "متن", "لوڈ", "تصویر_محفوظ_کریں", "بھیجیں", "انجام_دیں", 
+        "سنیں", "بولیں", "تشخیص_دیں", "سویا", "متن_میں", "کلیدیں", "مکمل_راستہ", "پیدا_کرنا", "موصول_ہونا", "لکھنا", 
+        "کلک", "ماؤس_کی_موقعیت", "موقعیت_متعین_کرنا", "دبائیں", "ڈائریکٹری_تبدیل_کریں", "ڈائریکٹری_بنائیں", "پروسیسر", "آپریٹنگ_سسٹم", "دورہ_کریں", "معماری", 
+        "ڈائریکٹری_کی_فہرست", "کیا_یہ_ڈائریکٹری_ہے", "منتقل_کریں", "سسٹم", "بے_ترتیب_پیدا_کریں", "موجودہ_کام_ڈائریکٹری", "تقسیم_کریں", "شامل_ہے", "بڑے_حروف", "چھوٹے_حروف", 
+        "پہلا_حرف_بڑا_کریں", "نقشہ", "نقشہ_بنانے_کا_موڈ", "تبدیل_کریں"
+      ],
+      "responses": ["Urdu_KW"],
+      "context_set": ""
+    },{
+      "tag": "Vietnamese_KW",
+      "patterns": [
+        "biến", "và", "hoặc", "không", "nếu", "ngược_lại_nếu", "ngược_lại", "từ", "đến", "bước", 
+        "trong_khi", "hàm", "thực_hiện", "kết_thúc", "trả_về", "tiếp_tục", "phá_vỡ", "in", "nhập_số_nguyên", "nhập", 
+        "là_số_nguyên", "là_chuỗi", "là_danh_sách", "là_từ_điển", "là_hàm", "số_nguyên", "số_thực", "Kì_vọng", "nhận_dạng", "rỗng", 
+        "đúng", "sai", "xóa", "thêm", "mở_rộng", "lấy_ra", "độ_dài", "xuống_dòng_mới", "đọc_tệp", "viết_tệp", 
+        "tổng", "lớn_nhất", "nhỏ_nhất", "giá_trị_tuyệt_đối", "chuỗi", "tải", "lưu_ảnh", "gửi", "nghe", "nói", 
+        "đánh_giá", "ngủ", "sang_chuỗi", "khóa", "đường_dẫn_tuyệt_đối", "tạo_ra", "nhận", "viết", "nhấp", "vị_trí_con_chuột", 
+        "thiết_lập_vị_trí", "nhấn", "thay_đổi_thư_mục", "tạo_thư_mục", "bộ_xử_lý", "hệ_thống", "ghé_thăm", "kiến_trúc", "danh_sách_thư_mục", "là_thư_mục", 
+        "di_chuyển", "tạo_ngẫu_nhiên", "thư_mục_làm_việc_hiện_tại", "tách", "chứa", "chữ_in_hoa", "chữ_thường", "viết_chữ_đầu", "đồ_thị", "chế_độ_vẽ_đồ_thị", 
+        "thay_thế"
+      ],
+      "responses": ["Vietnamese_KW"],
+      "context_set": ""
+    },{
+      "tag": "Azerbaijani_KW",
+      "patterns": [
+        "dəyişən", "və", "və_ya", "deyil", "əgər", "əks_halda", "yoxsa", "dən", "ilə", "addım", 
+        "dövrədən", "funksiya", "et", "son", "qaytar", "davam_et", "qır", "çap_et", "tam_sayı_girişi", "giriş", 
+        "tamsayıdır", "səbirdir", "siyahıdır", "lüğətdir", "funksiyadır", "tam", "nöqtəli", "gözlənilir", "tanımlayıcı", "boş", 
+        "doğru", "yalan", "təmizlə", "əlavə_et", "genişləndir", "çıxar", "uzunluq", "sətir", "oxu_fayl", "yaz_fayl", 
+        "idxal", "cəm", "maksimum", "minimum", "mütləq", "yük", "şəkli_yaddaşa_ver", "göndər", "icra", "dinlə", 
+        "söylə", "qiymətləndir", "yuxu", "sətirə_çevir", "açarlar", "mütləq_yol", "yarat", "qəbul_et", "yaz", "klik", 
+        "siçan_yerləşimi", "yerləşimi_təyin_et", "bas", "qovluğu_dəyişdir", "qovluq_yarat", "prosessör", "əməliyyat_sistemi", "ziyarət_et", "memarlıq", "qovluq_siyahısı", 
+        "qovluqdur", "köçür", "sistem", "təsadüfi_yarat", "cari_iş_qovluğu", "böl", "ehtiva_edir", "böyük_hərflər", "kiçik_hərflər", "baş_hərfi_böyüt", 
+        "qrafik", "qrafik_rejimi", "əvəz_et"
+      ],
+      "responses": ["Azerbaijani_KW"],
+      "context_set": ""
+    },{
+      "tag": "Greek_KW",
+      "patterns": [
+        "μεταβλητή", "και", "ή", "όχι", "αν", "αλλιώς_αν", "διαφορετικά", "από", "έως", "βήμα", 
+        "όσο_διαρκεί", "συνάρτηση", "κάνε", "τέλος", "επιστροφή", "συνέχισε", "διακόπτω", "εκτύπωσε", "είσοδος_ακεραίου", "είσοδος", 
+        "είναι_ακέραιος", "είναι_κείμενο", "είναι_λίστα", "είναι_λεξικό", "είναι_συνάρτηση", "ακέραιος", "κινητό_δεκαδικό", "αναμενόμενο", "αναγνωριστικό", "κενό", 
+        "αληθές", "ψευδές", "καθάρισε", "πρόσθεσε", "επεκτείνετε", "αφαίρεσε", "μήκος", "νέα_γραμμή", "διάβασε_αρχείο", "γράψε_αρχείο", 
+        "εισαγωγή", "άθροισμα", "μέγιστο", "ελάχιστο", "απόλυτη_τιμή", "κείμενο", "φόρτωσε", "αποθήκευσε_εικόνα", "στείλε", "εκτέλεσε", 
+        "άκουσε", "μίλα", "αξιολόγησε", "κοιμήσου", "σε_κείμενο", "κλειδιά", "απόλυτη_διαδρομή", "δημιούργησε", "δέξου", "γράψε", 
+        "κλικ", "θέση_ποντικιού", "ρύθμισε_θέση", "πάτησε", "άλλαξε_φάκελο", "δημιούργησε_φάκελο", "επεξεργαστής", "λειτουργικό_σύστημα", "επίσκεψη", "αρχιτεκτονική", 
+        "λίστα_φακέλων", "είναι_φάκελος", "μετακίνησε", "σύστημα", "τυχαιο_παραγωγή", "τρέχων_φάκελος", "διαχωρισμός", "περιέχει", "κεφαλαία", "πεζά", 
+        "αρχικό_κεφαλαίο", "γράφημα", "λειτουργία_γραφήματος", "αντικατάσταση"
+      ],
+      "responses": ["Greek_KW"],
+      "context_set": ""
+    },{
+      "tag": "Irish_KW",
+      "patterns": [
+        "athrú", "agus", "nó", "ní", "má", "nó_má", "seachas", "ó", "go", "céim", 
+        "ag_fad", "feidhm", "déan", "deireadh", "aisigh", "lean_ar_aghaidh", "briseadh", "priontáil", "ionput_uimhir", "ionput", 
+        "is_uimhir", "is_téacs", "is_liosta", "is_foclóir", "is_feidhm", "uimhir", "snámh", "dúntar", "ainmneacha", "ná", 
+        "fíor", "bréagach", "glan", "cuir_leis", "dáileadh", "bogadh", "fad", "liosta_nua", "léigh", "scríobh", 
+        "iompórtáil", "éascú", "uasmhéid", "íosmhéid", "uimeasc", "teagmha", "luchtaigh", "sábháil", "seol", "cleachtadh", 
+        "éist", "labhair", "meas", "codladh", "go_téacs", "eochair", "líne", "gineas", "faigh", "cliceáil", 
+        "áit_iomha", "set_location", "brúigh", "athraigh_eolaire", "cruthaigh_eolaire", "próiseálaí", "córas_oibriúcháin", "tabhair_cuairt", "ailtireacht", "liosta_eolaire", 
+        "is_eolaire", "bog", "córas", "gineadóir_fánach", "eolaire_reatha", "deighil", "cuimsíonn", "mórchlitheach", "mionchlitheach", "ceannlitriú", 
+        "plota", "mód_plota", "ionadaigh"
+      ],
+      "responses": ["Irish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Kurdish_KW",
+      "patterns": [
+        "guhertin", "û", "an", "ne", "heger", "heger_ne", "bêguman", "ji", "heta", "der", 
+        "dem", "fonsiyon", "kirin", "end", "bêjêre", "dema_ji_berdewam", "vêrekirin", "peyda_kirin", "girêdan_bilez", "girêdan", 
+        "heye_bilez", "heye_nivîsîn", "heye_lîstik", "heye_wergêr", "heye_fonksiyon", "bilez", "pêl_be_hev", "Xebitî", "navnîşan_dane", "vala", 
+        "raşt", "girêk", "paqij_kirin", "zêdekirin", "zêde_kirin", "cuda_kirin", "dirêjî", "xeta_nû", "xwendin_fayl", "nivîsandin_fayl", 
+        "daxwazkirin", "hemîn", "mezin", "kem", "mûtlak", "nivîs", "weşandin_wêne", "pêşkêş", "ekzekûte", "guhdar_kirin", 
+        "dirêjkirin", "bihewa", "bi_nivîs", "kîjan", "rê_çav", "afirandin", "wergirtin", "nivîsandin", "klik", "navenda_mûsê", 
+        "hilbijêrin_cî", "biguherîne_peldank", "çêkiya_peldank", "pêvajo", "sîstema_xebatê", "serdan", "mîmarî", "lîsteya_peldankan", "peldank_e", "veguhestin", 
+        "sîstem", "hilberînerê_tesadufî", "peldanka_aniha", "parvekirin", "dihewîne", "pîtên_mezin", "pîtên_biçûk", "pîta_yêkem_mezin", "grafîk", "móda_grafîkê", 
+        "şûngirtin"
+      ],
+      "responses": ["Kurdish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Latvian_KW",
+      "patterns": [
+        "mainīgais", "un", "vai", "nav", "ja", "citādi_ja", "citādi", "no", "līdz", "solis", 
+        "kamēr", "funkcija", "dari", "beigas", "atgriezt", "turpināt", "pārtraukt", "drukāt", "vesela_skaitļa_ievade", "ievade", 
+        "ir_vesels_skaitlis", "ir_virkne", "ir_saraksts", "ir_vārdnīca", "ir_funkcija", "vesels", "peldošais", "gaidīts", "identifikators", "nulle", 
+        "patiess", "aplams", "notīrīt", "pielikt", "paplašināt", "izņemt", "garums", "jaunā_rinda", "lasīt_failu", "rakstīt_failu", 
+        "importēt", "summa", "maksimums", "minimums", "absolūtā_vērtība", "virkne", "ielādēt", "saglabāt_attēlu", "nosūtīt", "izpildīt", 
+        "klausīties", "runāt", "novērtēt", "miegs", "uz_virkni", "atslēgas", "absolūtais_ceļš", "ģenerēt", "saņemt", "rakstīt", 
+        "klikšķis", "peles_atrašanās_vieta", "iestatīt_atrašanās_vietu", "nospiediet", "mainīt_mapes_ceļu", "izveidot_mapi", "procesors", "operētājsistēma", "apmeklēt", "arhitektūra", 
+        "mapes_saraksts", "ir_mape", "pārvietot", "sistēma", "ģenerēt_nejaušu", "pašreizējā_mape", "sadalīt", "satur", "lielie_burti", "mazie_burti", 
+        "pirmais_liela", "grafiks", "grafika_režīms", "aizstāt"
+      ],
+      "responses": ["Latvian_KW"],
+      "context_set": ""
+    },{
+      "tag": "Malay_KW",
+      "patterns": [
+        "perubahan", "dan", "atau", "bukan", "jika", "atau_jika", "lain", "dari", "ke", "langkah", 
+        "sementara", "fungsi", "lakukan", "akhir", "pulangkan", "teruskan", "henti", "cetak", "input_integer", "input", 
+        "adalah_integer", "adalah_string", "adalah_senarai", "adalah_kamus", "adalah_fungsi", "integer", "nombor_terapung", "dijangka", "pengecam", "kosong", 
+        "benar", "salah", "bersihkan", "sambung", "perluaskan", "keluarkan", "panjang", "baris_baru", "baca_fail", "tulis_fail", 
+        "import", "jumlah", "maksimum", "minimum", "mutlak", "string", "muat", "simpan_gambar", "hantar", "jalankan", 
+        "dengar", "cakap", "nilai", "tidur", "ke_string", "kunci", "laluan_mutlak", "jana", "terima", "tulis", 
+        "klik", "lokasi_tikus", "set_lokasi", "tekan", "tukar_direktori", "cipta_direktori", "pemproses", "sistem_operasi", "lawat", "senibina", 
+        "senarai_direktori", "adalah_direktori", "pindah", "sistem", "jana_rawak", "direktori_semasa", "pisah", "mengandungi", "huruf_besar", "huruf_kecil", 
+        "huruf_besar_awal", "plot", "mod_plot", "ganti"
+      ],
+      "responses": ["Malay_KW"],
+      "context_set": ""
+    },{
+      "tag": "Uzbek_KW",
+      "patterns": [
+        "o_zgaruvchi", "va", "yoki", "emas", "agar", "yoki_aks_holda", "aks_holda", "dan", "gacha", "bosqich", 
+        "vaqtgacha", "funksiya", "bajar", "oxiri", "qaytarish", "davom_etish", "to_xtatish", "chop_etish", "butun_son_kiritish", "kiritish", 
+        "butun_sonmi", "matnmi", "ro_yxatmi", "lug_atmi", "funksiyami", "butun", "onli", "kutish", "aniqlovchi", "bo_sh", 
+        "to_g_ri", "yolg_on", "tozalash", "qo_shish", "kengaytirish", "olib_tashlash", "uzunlik", "yangi_qator", "faylni_o_qish", "faylga_yozish", 
+        "import_qilish", "yig_indi", "eng_katta", "eng_kichik", "modul", "matn", "yuklash", "rasmini_saqlash", "yuborish", "bajarish", 
+        "tinglash", "so_zlash", "baholash", "uyqusini_tutish", "matnga_o_tkazish", "kalitlar", "mutlaq_yol", "yaratish", "qabul_qilish", "yozish", 
+        "bosish", "sichqon_joylashuvi", "joylashuvni_belgilash", "papkani_o_zgartirish", "papka_yaratish", "protsessor", "operatsion_tizim", "tashrif_buyurish", "arxitektura", "papkalar_ro_yxati", 
+        "papkami", "ko_chirish", "tizim", "tasodifiy_yaratish", "joriy_papka", "bo_lish", "o_z_ichiga_oladi", "katta_harflar", "kichik_harflar", "birinchi_harf_katta", 
+        "grafik", "grafik_rejimi", "almashtirish"
+      ],
+      "responses": ["Uzbek_KW"],
+      "context_set": ""
+    }
+  ]
+}

@@ -4,13 +4,14 @@ from Tokens import *
 from Lexer import *
 from Parser import *
 from Errors import *
-from datatypes import String, List, Number, Dict
-from datatypes.Function import *
-import importlib
+from datatypes import *
 
 # INTERPRETER
 
 class Interpreter:
+    def __init__(self, data_dict):
+        self.data_dict = data_dict
+
     def visit(self, node, context):
         method_name = f'visit_{type(node).__name__}'
         method = getattr(self, method_name, self.no_visit_method)
@@ -97,9 +98,9 @@ class Interpreter:
             result, error = left.get_comparison_lte(right)
         elif node.op_tok.type == TT_GTE:
             result, error = left.get_comparison_gte(right)
-        elif node.op_tok.matches(TT_KEYWORD, data_dict['and']):
+        elif node.op_tok.matches(TT_KEYWORD, self.data_dict['and']):
             result, error = left.anded_by(right)
-        elif node.op_tok.matches(TT_KEYWORD, data_dict['or']):
+        elif node.op_tok.matches(TT_KEYWORD, self.data_dict['or']):
             result, error = left.ored_by(right)
 
         if error:
@@ -116,7 +117,7 @@ class Interpreter:
 
         if node.op_tok.type == TT_MINUS:
             number, error = number.multed_by(Number(-1))
-        elif node.op_tok.matches(TT_KEYWORD, data_dict['not']):
+        elif node.op_tok.matches(TT_KEYWORD, self.data_dict['not']):
             number, error = number.notted()
 
         if error:
@@ -235,7 +236,7 @@ class Interpreter:
         func_name = node.var_name_tok.value if node.var_name_tok else None
         body_node = node.body_node
         arg_names = [arg_name.value for arg_name in node.arg_name_toks]
-        func_value = Function(func_name, body_node, arg_names, node.should_auto_return).set_context(context).set_pos(
+        func_value = Function(func_name, body_node, arg_names, node.should_auto_return, self.data_dict).set_context(context).set_pos(
             node.pos_start, node.pos_end)
 
         if node.var_name_tok:
@@ -276,17 +277,18 @@ class Interpreter:
 
     def visit_BreakNode(self, node, context):
         return RTResult().success_break()
-    
+
 class Function(BaseFunction):
-    def __init__(self, name, body_node, arg_names, should_auto_return):
+    def __init__(self, name, body_node, arg_names, should_auto_return, data_dict=None):
         super().__init__(name)
         self.body_node = body_node
         self.arg_names = arg_names
         self.should_auto_return = should_auto_return
-
+        self.data_dict = data_dict
+        
     def execute(self, args):
         res = RTResult()
-        interpreter = Interpreter()
+        interpreter = Interpreter(self.data_dict)
         exec_ctx = self.generate_new_context()
 
         res.register(self.check_and_populate_args(False, False, self.arg_names, args, exec_ctx))
@@ -299,7 +301,7 @@ class Function(BaseFunction):
         return res.success(ret_value)
 
     def copy(self):
-        copy = Function(self.name, self.body_node, self.arg_names, self.should_auto_return)
+        copy = Function(self.name, self.body_node, self.arg_names, self.should_auto_return, self.data_dict)
         copy.set_context(self.context)
         copy.set_pos(self.pos_start, self.pos_end)
         return copy
@@ -315,223 +317,5 @@ class deco:
         setattr(self.cls, f.__name__, f)
         return self.cls
 
-@deco(BuiltInFunction)
-def execute_run(self, exec_ctx):
-    fn = exec_ctx.symbol_table.get("fn")
-
-    if not isinstance(fn, String):
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            "Second argument must be string",
-            exec_ctx
-        ))
-
-    fn = fn.value
-
-    try:
-        with open(fn, "r", encoding="UTF-8") as f:
-            script = f.read()
-    except Exception as e:
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            f"Failed to load script \"{fn}\"\n" + str(e),
-            exec_ctx
-        ))
-
-    _, error = run(fn, script)
-
-    if error:
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            f"Failed to finish executing script \"{fn}\"\n" +
-            error.as_string(),
-            exec_ctx
-        ))
-
-    return RTResult().success(String.none)
-
-BuiltInFunction.execute_run.arg_names = ["fn"]
-BuiltInFunction.execute_run.infinite = False
-BuiltInFunction.execute_run.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_import(self, exec_ctx):
-    fn = exec_ctx.symbol_table.get("fn")
-    baseurl = "https://raw.githubusercontent.com/ZiadRabea/World-Programming/main/libs/"
-    if not isinstance(fn, String):
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            "Second argument must be string",
-            exec_ctx
-        ))
-
-    fn = fn.value
-    if ".world" in fn:
-        try:
-            with open(f"{app_path}/libs/{fn}", "r", encoding="UTF-8") as f:
-                script = f.read()
-        except Exception as e:
-            try:
-                response = requests.get(f"{baseurl}{fn}")
-                response.raise_for_status()  # Raise an exception for any unsuccessful request
-                with open(f"{app_path}/libs/{fn}", "w", encoding="UTF-8") as f:
-                    f.write(response.text)
-                with open(f"{app_path}/libs/{fn}", "r", encoding="UTF-8") as f:
-                    script = f.read()
-            except requests.exceptions.RequestException as e:
-                return RTResult().failure(RTError(
-                    self.pos_start, self.pos_end,
-                    f"Failed to load script \"{fn}\"\n" + str(e),
-                    exec_ctx
-                ))
-        _, error = run(fn, script)
-        if error:
-            return RTResult().failure(RTError(
-                self.pos_start, self.pos_end,
-                f"Failed to finish executing script \"{fn}\"\n" +
-                error.as_string(),
-                exec_ctx
-            ))
-
-    else:
-        try: 
-            importlib.import_module(f"_builtins.{fn}")
-        except ImportError as e:
-            return RTResult().failure(RTError(
-                self.pos_start, self.pos_end,
-                f"Failed to load script \"{fn}\"\n" + str(e),
-                exec_ctx
-            ))   
-
-    return RTResult().success(String.none)
-
-BuiltInFunction.execute_import.arg_names = ["fn"]
-BuiltInFunction.execute_import.infinite = False
-BuiltInFunction.execute_import.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_run_ext(self, exec_ctx):
-    fn = exec_ctx.symbol_table.get("fn")
-    baseurl = "https://raw.githubusercontent.com/ZiadRabea/World-Programming/main/extensions/"
-    if not isinstance(fn, String):
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            "argument must be string",
-            exec_ctx
-        ))
-
-    fn = fn.value + ".world"
-
-    try:
-        with open(f"{app_path}/libs/{fn}", "r", encoding="UTF-8") as f:
-            script = f.read()
-    except Exception as e:
-        try:
-            response = requests.get(f"{baseurl}{fn}")
-            response.raise_for_status()  # Raise an exception for any unsuccessful request
-            with open(f"{app_path}/../extensions/{fn}", "w", encoding="UTF-8") as f:
-                f.write(response.text)
-            with open(f"{app_path}/../extensions/{fn}", "r", encoding="UTF-8") as f:
-                script = f.read()
-        except requests.exceptions.RequestException as e:
-            return RTResult().failure(RTError(
-                self.pos_start, self.pos_end,
-                f"Failed to load script \"{fn}\"\n" + str(e),
-                exec_ctx
-            ))
-
-    _, error = run(fn, script)
-
-    if error:
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            f"Failed to finish executing script \"{fn}\"\n" +
-            error.as_string(),
-            exec_ctx
-        ))
-
-    return RTResult().success(String.none)
-
-BuiltInFunction.execute_run_ext.arg_names = ["fn"]
-BuiltInFunction.execute_run_ext.infinite = False
-BuiltInFunction.execute_run_ext.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_exec(self, exec_ctx):
-    code = exec_ctx.symbol_table.get('code')
-    if not isinstance(code, String):
-        return RTResult().failure(RTError(
-            self.pos_start, self.pos_end,
-            "code must be a string",
-            exec_ctx
-        ))
-    run("<stdin>", code.value)
-    return RTResult().success(String.none)
-
-BuiltInFunction.execute_exec.arg_names = ['code']
-BuiltInFunction.execute_exec.infinite = False
-BuiltInFunction.execute_exec.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_eval(self, exec_ctx):
-    result, error = run("<std-in>", exec_ctx.symbol_table.get('text').value)
-    print(result)
-    return RTResult().success(result.elements[0])
-
-BuiltInFunction.execute_eval.arg_names = ['text']
-BuiltInFunction.execute_eval.infinite = False
-BuiltInFunction.execute_eval.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_cwd(self, exec_ctx):
-    result = os.getcwd()
-    return RTResult().success(String(result))
-
-BuiltInFunction.execute_cwd.arg_names = []
-BuiltInFunction.execute_cwd.infinite = False
-BuiltInFunction.execute_cwd.accept_none = False
-
-@deco(BuiltInFunction)
-def execute_exit(self, exec_ctx):
-    sys.exit()
-    return RTResult().success(String.none)
-
-BuiltInFunction.execute_exit.arg_names = []
-BuiltInFunction.execute_exit.infinite = False
-BuiltInFunction.execute_exit.accept_none = False
 
 
-BuiltInFunction.importfile = BuiltInFunction("import")
-BuiltInFunction.run = BuiltInFunction("run")
-BuiltInFunction.run_ext = BuiltInFunction("run_ext")
-BuiltInFunction.eval = BuiltInFunction("eval")
-BuiltInFunction.exec = BuiltInFunction("exec")
-BuiltInFunction.cwd = BuiltInFunction("cwd")
-BuiltInFunction.exit = BuiltInFunction("exit")
-
-global_symbol_table.set(f"{data_dict['import']}", BuiltInFunction.importfile)
-global_symbol_table.set(f"world", BuiltInFunction.run)
-global_symbol_table.set(f"run", BuiltInFunction.run_ext)
-global_symbol_table.set(f"{data_dict['exec']}", BuiltInFunction.exec)
-global_symbol_table.set(f"{data_dict['eval']}", BuiltInFunction.eval)
-global_symbol_table.set(f"{data_dict['cwd']}", BuiltInFunction.cwd)
-global_symbol_table.set(f"exit", BuiltInFunction.exit)
-
-def run(fn, text):
-    # Generate tokens
-    lexer = Lexer(fn, text)
-    tokens, error = lexer.make_tokens()
-    if error: return None, error
-
-    # Generate AST
-    parser = Parser(tokens)
-    ast = parser.parse()
-    if ast.error: return None, ast.error
-
-    # Run program
-    interpreter = Interpreter()
-    context = Context('<program>')
-    context.symbol_table = global_symbol_table
-    result = interpreter.visit(ast.node, context)
-
-    return result.value, result.error

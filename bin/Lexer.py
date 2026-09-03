@@ -2,6 +2,12 @@
 import sys
 from Tokens import *
 from Errors import *
+from KWLoader import *
+from setlang import get_lang
+
+language = get_lang()
+if not language :
+    from LangDetectorNN.detect_lang import detect
 
 # CONSTANTS
 if getattr(sys, 'frozen', False):
@@ -15,6 +21,9 @@ class Lexer:
     def __init__(self, fn, text):
         self.fn = fn
         self.text = text
+        self.language = language if language else detect(self.text)
+        print(self.language)
+        self.data_dict, self.keywords = get_keywords_for(self.language)
         self.pos = Position(-1, 0, -1, fn, text)
         self.current_char = None
         self.advance()
@@ -92,7 +101,7 @@ class Lexer:
                 tokens.append(self.make_identifier())
 
         tokens.append(Token(TT_EOF, pos_start=self.pos))
-        return tokens, None
+        return self.data_dict, tokens, None
 
     def make_number(self):
         num_str = ''
@@ -144,7 +153,7 @@ class Lexer:
             id_str += self.current_char
             self.advance()
 
-        tok_type = TT_KEYWORD if id_str in KEYWORDS else TT_IDENTIFIER
+        tok_type = TT_KEYWORD if id_str in self.keywords else TT_IDENTIFIER
         return Token(tok_type, id_str, pos_start, self.pos)
 
     def make_minus_or_arrow(self):

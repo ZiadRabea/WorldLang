@@ -27,4 +27,7 @@ BuiltInFunction.execute_random_gen.infinite = False
 BuiltInFunction.execute_random_gen.accept_none = False
 
 BuiltInFunction.gen_random = BuiltInFunction("random_gen")
-global_symbol_table.set(f"{data_dict['gen_random']}", BuiltInFunction.gen_random)
+
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['gen_random']}", BuiltInFunction.gen_random)
+    print(global_symbol_table.get(data_dict['gen_random']))

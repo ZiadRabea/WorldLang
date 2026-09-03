@@ -209,8 +209,9 @@ class ParseResult:
 # PARSER
 
 class Parser:
-    def __init__(self, tokens):
+    def __init__(self, tokens, data_dict):
         self.tokens = tokens
+        self.data_dict = data_dict
         self.tok_idx = -1
         self.advance()
 
@@ -281,7 +282,7 @@ class Parser:
         res = ParseResult()
         pos_start = self.current_tok.pos_start.copy()
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['return']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['return']):
             res.register_advancement()
             self.advance()
 
@@ -290,12 +291,12 @@ class Parser:
                 self.reverse(res.to_reverse_count)
             return res.success(ReturnNode(expr, pos_start, self.current_tok.pos_start.copy()))
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['continue']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['continue']):
             res.register_advancement()
             self.advance()
             return res.success(ContinueNode(pos_start, self.current_tok.pos_start.copy()))
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['break']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['break']):
             res.register_advancement()
             self.advance()
             return res.success(BreakNode(pos_start, self.current_tok.pos_start.copy()))
@@ -304,14 +305,14 @@ class Parser:
         if res.error:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"Expected {data_dict['return']}, {data_dict['continue']}, {data_dict['break']}, {data_dict['var']}, {data_dict['if']}, {data_dict['from']}, {data_dict['while']}, {data_dict['func']}, {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[' {data_dict['or']} '{data_dict['not']}"
+                f"Expected {self.data_dict['return']}, {self.data_dict['continue']}, {self.data_dict['break']}, {self.data_dict['var']}, {self.data_dict['if']}, {self.data_dict['from']}, {self.data_dict['while']}, {self.data_dict['func']}, {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[' {self.data_dict['or']} '{self.data_dict['not']}"
             ))
         return res.success(expr)
 
     def expr(self):
         res = ParseResult()
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['var']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['var']):
             res.register_advancement()
             self.advance()
 
@@ -337,12 +338,12 @@ class Parser:
             if res.error: return res
             return res.success(VarAssignNode(var_name, expr))
 
-        node = res.register(self.bin_op(self.comp_expr, ((TT_KEYWORD, f'{data_dict["and"]}'), (TT_KEYWORD, f'{data_dict["or"]}'))))
+        node = res.register(self.bin_op(self.comp_expr, ((TT_KEYWORD, f'{self.data_dict["and"]}'), (TT_KEYWORD, f'{self.data_dict["or"]}'))))
 
         if res.error:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} ']', '{data_dict['var']}', '{data_dict['if']}', {data_dict['from']}', '{data_dict['while']}', '{data_dict['func']}', {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[' {data_dict['or']} '{data_dict['not']}'"
+                f"{self.data_dict['Expected']} ']', '{self.data_dict['var']}', '{self.data_dict['if']}', {self.data_dict['from']}', '{self.data_dict['while']}', '{self.data_dict['func']}', {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[' {self.data_dict['or']} '{self.data_dict['not']}'"
             ))
 
         return res.success(node)
@@ -350,7 +351,7 @@ class Parser:
     def comp_expr(self):
         res = ParseResult()
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['not']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['not']):
             op_tok = self.current_tok
             res.register_advancement()
             self.advance()
@@ -364,7 +365,7 @@ class Parser:
         if res.error:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[', '{data_dict['if']}', '{data_dict['from']}', '{data_dict['while']}', '{data_dict['func']}' {data_dict['or']} ' {data_dict['not']}'"
+                f"{self.data_dict['Expected']} {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[', '{self.data_dict['if']}', '{self.data_dict['from']}', '{self.data_dict['while']}', '{self.data_dict['func']}' {self.data_dict['or']} ' {self.data_dict['not']}'"
             ))
 
         return res.success(node)
@@ -409,7 +410,7 @@ class Parser:
                 if res.error:
                     return res.failure(InvalidSyntaxError(
                         self.current_tok.pos_start, self.current_tok.pos_end,
-                        f"{data_dict['Expected']} ']', '{data_dict['var']}', '{data_dict['if']}', {data_dict['from']}', '{data_dict['while']}', '{data_dict['func']}', {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[' {data_dict['or']} '{data_dict['not']}'"
+                        f"{self.data_dict['Expected']} ']', '{self.data_dict['var']}', '{self.data_dict['if']}', {self.data_dict['from']}', '{self.data_dict['while']}', '{self.data_dict['func']}', {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[' {self.data_dict['or']} '{self.data_dict['not']}'"
                     ))
 
                 while self.current_tok.type == TT_COMMA:
@@ -422,7 +423,7 @@ class Parser:
                 if self.current_tok.type != TT_RPAREN:
                     return res.failure(InvalidSyntaxError(
                         self.current_tok.pos_start, self.current_tok.pos_end,
-                        f"{data_dict['Expected']} ',' '{data_dict['or']})'"
+                        f"{self.data_dict['Expected']} ',' '{self.data_dict['or']})'"
                     ))
 
                 res.register_advancement()
@@ -461,7 +462,7 @@ class Parser:
             else:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} ')'"
+                    f"{self.data_dict['Expected']} ')'"
                 ))
 
         elif tok.type == TT_LSQUARE:
@@ -474,29 +475,29 @@ class Parser:
             if res.error: return res
             return res.success(dict_expr)
 
-        elif tok.matches(TT_KEYWORD, data_dict['if']):
+        elif tok.matches(TT_KEYWORD, self.data_dict['if']):
             if_expr = res.register(self.if_expr())
             if res.error: return res
             return res.success(if_expr)
 
-        elif tok.matches(TT_KEYWORD, data_dict['from']):
+        elif tok.matches(TT_KEYWORD, self.data_dict['from']):
             for_expr = res.register(self.for_expr())
             if res.error: return res
             return res.success(for_expr)
 
-        elif tok.matches(TT_KEYWORD, data_dict['while']):
+        elif tok.matches(TT_KEYWORD, self.data_dict['while']):
             while_expr = res.register(self.while_expr())
             if res.error: return res
             return res.success(while_expr)
 
-        elif tok.matches(TT_KEYWORD, data_dict['func']):
+        elif tok.matches(TT_KEYWORD, self.data_dict['func']):
             func_def = res.register(self.func_def())
             if res.error: return res
             return res.success(func_def)
 
         return res.failure(InvalidSyntaxError(
             tok.pos_start, tok.pos_end,
-            f"{data_dict['Expected']} {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[', '{data_dict['if']}', '{data_dict['from']}', '{data_dict['while']}', '{data_dict['func']}'"
+            f"{self.data_dict['Expected']} {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[', '{self.data_dict['if']}', '{self.data_dict['from']}', '{self.data_dict['while']}', '{self.data_dict['func']}'"
         ))
 
     def list_expr(self):
@@ -507,7 +508,7 @@ class Parser:
         if self.current_tok.type != TT_LSQUARE:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '['"
+                f"{self.data_dict['Expected']} '['"
             ))
 
         res.register_advancement()
@@ -524,7 +525,7 @@ class Parser:
             if res.error:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} ']', '{data_dict['var']}', '{data_dict['if']}', {data_dict['from']}', '{data_dict['while']}', '{data_dict['func']}', {data_dict['int']}, {data_dict['float']}, {data_dict['identifier']}, '+', '-', '(', '[' {data_dict['or']} '{data_dict['not']}'"
+                    f"{self.data_dict['Expected']} ']', '{self.data_dict['var']}', '{self.data_dict['if']}', {self.data_dict['from']}', '{self.data_dict['while']}', '{self.data_dict['func']}', {self.data_dict['int']}, {self.data_dict['float']}, {self.data_dict['identifier']}, '+', '-', '(', '[' {self.data_dict['or']} '{self.data_dict['not']}'"
                 ))
 
             while self.current_tok.type in (TT_COMMA, TT_NEWLINE):
@@ -546,7 +547,7 @@ class Parser:
         if self.current_tok.type != TT_RSQUARE:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} ',' {data_dict['or']} ']'"
+                f"{self.data_dict['Expected']} ',' {self.data_dict['or']} ']'"
             ))
         res.register_advancement()
         self.advance()
@@ -565,7 +566,7 @@ class Parser:
         if self.current_tok.type != TT_LBRACE:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{{'"
+                f"{self.data_dict['Expected']} '{{'"
             ))
 
         res.register_advancement()
@@ -584,12 +585,12 @@ class Parser:
             if res.error:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} {data_dict['identifier']}"
+                    f"{self.data_dict['Expected']} {self.data_dict['identifier']}"
                 ))
             if self.current_tok.type != TT_COLON:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} ':'"
+                    f"{self.data_dict['Expected']} ':'"
                 ))
 
             res.register_advancement()
@@ -598,7 +599,7 @@ class Parser:
             if res.error:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} {data_dict['expression']}"
+                    f"{self.data_dict['Expected']} {self.data_dict['expression']}"
                 ))
 
             key_value_pairs.append((key_expr, value_expr))
@@ -614,13 +615,13 @@ class Parser:
                     if res.error:
                         return res.failure(InvalidSyntaxError(
                             self.current_tok.pos_start, self.current_tok.pos_end,
-                            f"{data_dict['Expected']} {data_dict['identifier']}"
+                            f"{self.data_dict['Expected']} {self.data_dict['identifier']}"
                         ))
 
                     if self.current_tok.type != TT_COLON:
                         return res.failure(InvalidSyntaxError(
                             self.current_tok.pos_start, self.current_tok.pos_end,
-                            f"{data_dict['Expected']} ':'"
+                            f"{self.data_dict['Expected']} ':'"
                         ))
 
                     res.register_advancement()
@@ -630,7 +631,7 @@ class Parser:
                     if res.error:
                         return res.failure(InvalidSyntaxError(
                             self.current_tok.pos_start, self.current_tok.pos_end,
-                            f"{data_dict['Expected']} {data_dict['expression']}"
+                            f"{self.data_dict['Expected']} {self.data_dict['expression']}"
                         ))
 
                     key_value_pairs.append((key_expr, value_expr))
@@ -640,7 +641,7 @@ class Parser:
         if self.current_tok.type != TT_RBRACE:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '}}' {data_dict['or']} ','"
+                f"{self.data_dict['Expected']} '}}' {self.data_dict['or']} ','"
             ))
 
         res.register_advancement()
@@ -651,19 +652,19 @@ class Parser:
 
     def if_expr(self):
         res = ParseResult()
-        all_cases = res.register(self.if_expr_cases(data_dict['if']))
+        all_cases = res.register(self.if_expr_cases(self.data_dict['if']))
         if res.error: return res
         cases, else_case = all_cases
         return res.success(IfNode(cases, else_case))
 
     def if_expr_b(self):
-        return self.if_expr_cases(data_dict['elif'])
+        return self.if_expr_cases(self.data_dict['elif'])
 
     def if_expr_c(self):
         res = ParseResult()
         else_case = None
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['else']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['else']):
             res.register_advancement()
             self.advance()
 
@@ -675,13 +676,13 @@ class Parser:
                 if res.error: return res
                 else_case = (statements, True)
 
-                if self.current_tok.matches(TT_KEYWORD, data_dict['end']):
+                if self.current_tok.matches(TT_KEYWORD, self.data_dict['end']):
                     res.register_advancement()
                     self.advance()
                 else:
                     return res.failure(InvalidSyntaxError(
                         self.current_tok.pos_start, self.current_tok.pos_end,
-                        f"{data_dict['Expected']} '{data_dict['end']}'"
+                        f"{self.data_dict['Expected']} '{self.data_dict['end']}'"
                     ))
             else:
                 expr = res.register(self.statement())
@@ -694,7 +695,7 @@ class Parser:
         res = ParseResult()
         cases, else_case = [], None
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['elif']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['elif']):
             all_cases = res.register(self.if_expr_b())
             if res.error: return res
             cases, else_case = all_cases
@@ -712,7 +713,7 @@ class Parser:
         if not self.current_tok.matches(TT_KEYWORD, case_keyword):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{case_keyword}'"
+                f"{self.data_dict['Expected']} '{case_keyword}'"
             ))
 
         res.register_advancement()
@@ -721,10 +722,10 @@ class Parser:
         condition = res.register(self.expr())
         if res.error: return res
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['do']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['do']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['do']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['do']}'"
             ))
 
         res.register_advancement()
@@ -738,7 +739,7 @@ class Parser:
             if res.error: return res
             cases.append((condition, statements, True))
 
-            if self.current_tok.matches(TT_KEYWORD, data_dict['end']):
+            if self.current_tok.matches(TT_KEYWORD, self.data_dict['end']):
                 res.register_advancement()
                 self.advance()
             else:
@@ -761,10 +762,10 @@ class Parser:
     def for_expr(self):
         res = ParseResult()
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['from']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['from']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['from']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['from']}'"
             ))
 
         res.register_advancement()
@@ -773,7 +774,7 @@ class Parser:
         if self.current_tok.type != TT_IDENTIFIER:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} {data_dict['identifier']}"
+                f"{self.data_dict['Expected']} {self.data_dict['identifier']}"
             ))
 
         var_name = self.current_tok
@@ -783,7 +784,7 @@ class Parser:
         if self.current_tok.type != TT_EQ:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '='"
+                f"{self.data_dict['Expected']} '='"
             ))
 
         res.register_advancement()
@@ -792,10 +793,10 @@ class Parser:
         start_value = res.register(self.expr())
         if res.error: return res
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['to']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['to']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['to']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['to']}'"
             ))
 
         res.register_advancement()
@@ -804,7 +805,7 @@ class Parser:
         end_value = res.register(self.expr())
         if res.error: return res
 
-        if self.current_tok.matches(TT_KEYWORD, data_dict['step']):
+        if self.current_tok.matches(TT_KEYWORD, self.data_dict['step']):
             res.register_advancement()
             self.advance()
 
@@ -813,10 +814,10 @@ class Parser:
         else:
             step_value = None
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['do']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['do']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['do']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['do']}'"
             ))
 
         res.register_advancement()
@@ -829,10 +830,10 @@ class Parser:
             body = res.register(self.statements())
             if res.error: return res
 
-            if not self.current_tok.matches(TT_KEYWORD, data_dict['end']):
+            if not self.current_tok.matches(TT_KEYWORD, self.data_dict['end']):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} '{data_dict['end']}'"
+                    f"{self.data_dict['Expected']} '{self.data_dict['end']}'"
                 ))
 
             res.register_advancement()
@@ -848,10 +849,10 @@ class Parser:
     def while_expr(self):
         res = ParseResult()
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['while']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['while']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['while']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['while']}'"
             ))
 
         res.register_advancement()
@@ -860,10 +861,10 @@ class Parser:
         condition = res.register(self.expr())
         if res.error: return res
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['do']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['do']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['do']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['do']}'"
             ))
 
         res.register_advancement()
@@ -876,10 +877,10 @@ class Parser:
             body = res.register(self.statements())
             if res.error: return res
 
-            if not self.current_tok.matches(TT_KEYWORD, data_dict['end']):
+            if not self.current_tok.matches(TT_KEYWORD, self.data_dict['end']):
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} '{data_dict['end']}'"
+                    f"{self.data_dict['Expected']} '{self.data_dict['end']}'"
                 ))
 
             res.register_advancement()
@@ -895,10 +896,10 @@ class Parser:
     def func_def(self):
         res = ParseResult()
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['func']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['func']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['func']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['func']}'"
             ))
 
         res.register_advancement()
@@ -911,14 +912,14 @@ class Parser:
             if self.current_tok.type != TT_LPAREN:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} '('"
+                    f"{self.data_dict['Expected']} '('"
                 ))
         else:
             var_name_tok = None
             if self.current_tok.type != TT_LPAREN:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} {data_dict['identifier']} {data_dict['or']} '('"
+                    f"{self.data_dict['Expected']} {self.data_dict['identifier']} {self.data_dict['or']} '('"
                 ))
 
         res.register_advancement()
@@ -937,7 +938,7 @@ class Parser:
                 if self.current_tok.type != TT_IDENTIFIER:
                     return res.failure(InvalidSyntaxError(
                         self.current_tok.pos_start, self.current_tok.pos_end,
-                        f"{data_dict['Expected']} {data_dict['identifier']}"
+                        f"{self.data_dict['Expected']} {self.data_dict['identifier']}"
                     ))
 
                 arg_name_toks.append(self.current_tok)
@@ -947,13 +948,13 @@ class Parser:
             if self.current_tok.type != TT_RPAREN:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} ',' {data_dict['or']} ')'"
+                    f"{self.data_dict['Expected']} ',' {self.data_dict['or']} ')'"
                 ))
         else:
             if self.current_tok.type != TT_RPAREN:
                 return res.failure(InvalidSyntaxError(
                     self.current_tok.pos_start, self.current_tok.pos_end,
-                    f"{data_dict['Expected']} {data_dict['identifier']} {data_dict['or']} ')'"
+                    f"{self.data_dict['Expected']} {self.data_dict['identifier']} {self.data_dict['or']} ')'"
                 ))
 
         res.register_advancement()
@@ -976,7 +977,7 @@ class Parser:
         if self.current_tok.type != TT_NEWLINE:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '->' {data_dict['or']} {data_dict['NEWLINE']}"
+                f"{self.data_dict['Expected']} '->' {self.data_dict['or']} {self.data_dict['NEWLINE']}"
             ))
 
         res.register_advancement()
@@ -985,10 +986,10 @@ class Parser:
         body = res.register(self.statements())
         if res.error: return res
 
-        if not self.current_tok.matches(TT_KEYWORD, data_dict['end']):
+        if not self.current_tok.matches(TT_KEYWORD, self.data_dict['end']):
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                f"{data_dict['Expected']} '{data_dict['end']}'"
+                f"{self.data_dict['Expected']} '{self.data_dict['end']}'"
             ))
 
         res.register_advancement()

@@ -27,7 +27,6 @@ BuiltInFunction.execute_split.infinite = False
 BuiltInFunction.execute_split.accept_none = False
 
 BuiltInFunction.split = BuiltInFunction("split")
-global_symbol_table.set(f"{data_dict['split']}", BuiltInFunction.split)
 
 @deco(BuiltInFunction)
 def execute_uppercase(self, exec_ctx):
@@ -46,7 +45,6 @@ BuiltInFunction.execute_uppercase.infinite = False
 BuiltInFunction.execute_uppercase.accept_none = False
 
 BuiltInFunction.upper = BuiltInFunction("uppercase")
-global_symbol_table.set(f"{data_dict['uppercase']}", BuiltInFunction.upper)
 
 
 @deco(BuiltInFunction)
@@ -66,7 +64,6 @@ BuiltInFunction.execute_lowercase.infinite = False
 BuiltInFunction.execute_lowercase.accept_none = False
 
 BuiltInFunction.lower = BuiltInFunction("lowercase")
-global_symbol_table.set(f"{data_dict['lowercase']}", BuiltInFunction.lower)
 
 @deco(BuiltInFunction)
 def execute_capitalize(self, exec_ctx):
@@ -85,7 +82,6 @@ BuiltInFunction.execute_capitalize.infinite = False
 BuiltInFunction.execute_capitalize.accept_none = False
 
 BuiltInFunction.capitalize = BuiltInFunction("capitalize")
-global_symbol_table.set(f"{data_dict['capitalize']}", BuiltInFunction.capitalize)
 
 
 @deco(BuiltInFunction)
@@ -110,7 +106,6 @@ BuiltInFunction.execute_contains.infinite = False
 BuiltInFunction.execute_contains.accept_none = False
 
 BuiltInFunction.contains = BuiltInFunction("contains")
-global_symbol_table.set(f"{data_dict['contains']}", BuiltInFunction.contains)
 
 
 @deco(BuiltInFunction)
@@ -138,4 +133,12 @@ BuiltInFunction.execute_replace.infinite = False
 BuiltInFunction.execute_replace.accept_none = False
 
 BuiltInFunction.replace = BuiltInFunction("replace")
-global_symbol_table.set(f"{data_dict['replace']}", BuiltInFunction.replace)
+
+
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['split']}", BuiltInFunction.split)
+    global_symbol_table.set(f"{data_dict['uppercase']}", BuiltInFunction.upper)
+    global_symbol_table.set(f"{data_dict['lowercase']}", BuiltInFunction.lower)
+    global_symbol_table.set(f"{data_dict['capitalize']}", BuiltInFunction.capitalize)
+    global_symbol_table.set(f"{data_dict['contains']}", BuiltInFunction.contains)
+    global_symbol_table.set(f"{data_dict['replace']}", BuiltInFunction.replace)

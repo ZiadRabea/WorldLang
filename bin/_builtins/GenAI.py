@@ -109,7 +109,9 @@ BuiltInFunction.execute_generate.accept_none = False
 
 
 BuiltInFunction.generate = BuiltInFunction("generate")
-global_symbol_table.set(f"{data_dict['generate']}", BuiltInFunction.generate)
-
 BuiltInFunction.run_ai = BuiltInFunction("run_ai")
-global_symbol_table.set(f"run_ai", BuiltInFunction.run_ai)
+
+
+def append_to_global_symbol_table(data_dict):
+    global_symbol_table.set(f"{data_dict['generate']}", BuiltInFunction.generate)
+    global_symbol_table.set(f"run_ai", BuiltInFunction.run_ai)
