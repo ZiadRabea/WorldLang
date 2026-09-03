@@ -1,7 +1,7 @@
 {
     "keywords": [
         {
-            "var": "zgaruvchi",
+            "var": "o_zgaruvchi",
             "and": "va",
             "or": "yoki",
             "not": "emas",
@@ -39,7 +39,7 @@
             "pop": "olib_tashlash",
             "len": "uzunlik",
             "NEWLINE": "yangi_qator",
-            "readf": "faylni_uchirish",
+            "readf": "faylni_o_qish",
             "writef": "faylga_yozish",
             "import": "import_qilish",
             "sum": "yig_indi",
@@ -58,12 +58,33 @@
             "to_string": "matnga_o_tkazish",
             "keys": "kalitlar",
             "abspath": "mutlaq_yol",
+            "generate": "yaratish",
             "receive": "qabul_qilish",
             "write": "yozish",
             "click": "bosish",
             "mouse_location": "sichqon_joylashuvi",
             "set_location": "joylashuvni_belgilash",
-            "press": "bosish"
+            "press": "bosish",
+            "chdir": "papkani_o_zgartirish",
+            "mkdir": "papka_yaratish",
+            "processor": "protsessor",
+            "os": "operatsion_tizim",
+            "visit": "tashrif_buyurish",
+            "architecture": "arxitektura",
+            "list_dir": "papkalar_ro_yxati",
+            "is_dir": "papkami",
+            "move": "ko_chirish",
+            "system": "tizim",
+            "gen_random": "tasodifiy_yaratish",
+            "cwd": "joriy_papka",
+            "split": "bo_lish",
+            "contains": "o_z_ichiga_oladi",
+            "uppercase": "katta_harflar",
+            "lowercase": "kichik_harflar",
+            "capitalize": "birinchi_harf_katta",
+            "plot": "grafik",
+            "plotting_mode": "grafik_rejimi",
+            "replace": "almashtirish"
         }
     ]
 }

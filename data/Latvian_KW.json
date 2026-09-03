@@ -58,12 +58,40 @@
             "to_string": "uz_virkni",
             "keys": "atslēgas",
             "abspath": "absolūtais_ceļš",
+<<<<<<< HEAD
+            "generate": "ģenerēt",
+=======
+>>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "saņemt",
             "write": "rakstīt",
             "click": "klikšķis",
             "mouse_location": "peles_atrašanās_vieta",
             "set_location": "iestatīt_atrašanās_vietu",
+<<<<<<< HEAD
+            "press": "nospiediet",
+            "chdir": "mainīt_mapes_ceļu",
+            "mkdir": "izveidot_mapi",
+            "processor": "procesors",
+            "os": "operētājsistēma",
+            "visit": "apmeklēt",
+            "architecture": "arhitektūra",
+            "list_dir": "mapes_saraksts",
+            "is_dir": "ir_mape",
+            "move": "pārvietot",
+            "system": "sistēma",
+            "gen_random": "ģenerēt_nejaušu",
+            "cwd": "pašreizējā_mape",
+            "split": "sadalīt",
+            "contains": "satur",
+            "uppercase": "lielie_burti",
+            "lowercase": "mazie_burti",
+            "capitalize": "pirmais_liela",
+            "plot": "grafiks",
+            "plotting_mode": "grafika_režīms",
+            "replace": "aizstāt"
+=======
             "press": "nospiediet"
+>>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }
