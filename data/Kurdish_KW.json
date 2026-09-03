@@ -58,16 +58,12 @@
             "to_string": "bi_nivîs",
             "keys": "kîjan",
             "abspath": "rê_çav",
-<<<<<<< HEAD
             "generate": "afirandin",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "wergirtin",
             "write": "nivîsandin",
             "click": "klik",
             "mouse_location": "navenda_mûsê",
             "set_location": "hilbijêrin_cî",
-<<<<<<< HEAD
             "press": "guhertin",
             "chdir": "biguherîne_peldank",
             "mkdir": "çêkiya_peldank",
@@ -89,9 +85,6 @@
             "plot": "grafîk",
             "plotting_mode": "móda_grafîkê",
             "replace": "şûngirtin"
-=======
-            "press": "guhertin"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }

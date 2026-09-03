@@ -58,16 +58,12 @@
             "to_string": "go_téacs",
             "keys": "eochair",
             "abspath": "líne",
-<<<<<<< HEAD
             "generate": "gineas",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "faigh",
             "write": "scríobh",
             "click": "cliceáil",
             "mouse_location": "áit_iomha",
             "set_location": "set_location",
-<<<<<<< HEAD
             "press": "brúigh",
             "chdir": "athraigh_eolaire",
             "mkdir": "cruthaigh_eolaire",
@@ -89,9 +85,6 @@
             "plot": "plota",
             "plotting_mode": "mód_plota",
             "replace": "ionadaigh"
-=======
-            "press": "brúigh"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }
