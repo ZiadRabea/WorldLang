@@ -58,16 +58,12 @@
             "to_string": "sətirə_çevir",
             "keys": "açarlar",
             "abspath": "mütləq_yol",
-<<<<<<< HEAD
             "generate": "yarat",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "qəbul_et",
             "write": "yaz",
             "click": "klik",
             "mouse_location": "siçan_yerləşimi",
             "set_location": "yerləşimi_təyin_et",
-<<<<<<< HEAD
             "press": "bas",
             "chdir": "qovluğu_dəyişdir",
             "mkdir": "qovluq_yarat",
@@ -89,9 +85,6 @@
             "plot": "qrafik",
             "plotting_mode": "qrafik_rejimi",
             "replace": "əvəz_et"
-=======
-            "press": "bas"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }
