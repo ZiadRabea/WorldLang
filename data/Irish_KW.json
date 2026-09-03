@@ -58,40 +58,12 @@
             "to_string": "go_téacs",
             "keys": "eochair",
             "abspath": "líne",
-<<<<<<< HEAD
-            "generate": "gineas",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "faigh",
             "write": "scríobh",
             "click": "cliceáil",
             "mouse_location": "áit_iomha",
             "set_location": "set_location",
-<<<<<<< HEAD
-            "press": "brúigh",
-            "chdir": "athraigh_eolaire",
-            "mkdir": "cruthaigh_eolaire",
-            "processor": "próiseálaí",
-            "os": "córas_oibriúcháin",
-            "visit": "tabhair_cuairt",
-            "architecture": "ailtireacht",
-            "list_dir": "liosta_eolaire",
-            "is_dir": "is_eolaire",
-            "move": "bog",
-            "system": "córas",
-            "gen_random": "gineadóir_fánach",
-            "cwd": "eolaire_reatha",
-            "split": "deighil",
-            "contains": "cuimsíonn",
-            "uppercase": "mórchlitheach",
-            "lowercase": "mionchlitheach",
-            "capitalize": "ceannlitriú",
-            "plot": "plota",
-            "plotting_mode": "mód_plota",
-            "replace": "ionadaigh"
-=======
             "press": "brúigh"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }

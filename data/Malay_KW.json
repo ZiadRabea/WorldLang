@@ -58,40 +58,12 @@
             "to_string": "ke_string",
             "keys": "kunci",
             "abspath": "laluan_mutlak",
-<<<<<<< HEAD
-            "generate": "jana",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "terima",
             "write": "tulis",
             "click": "klik",
             "mouse_location": "lokasi_tikus",
             "set_location": "set_lokasi",
-<<<<<<< HEAD
-            "press": "tekan",
-            "chdir": "tukar_direktori",
-            "mkdir": "cipta_direktori",
-            "processor": "pemproses",
-            "os": "sistem_operasi",
-            "visit": "lawat",
-            "architecture": "senibina",
-            "list_dir": "senarai_direktori",
-            "is_dir": "adalah_direktori",
-            "move": "pindah",
-            "system": "sistem",
-            "gen_random": "jana_rawak",
-            "cwd": "direktori_semasa",
-            "split": "pisah",
-            "contains": "mengandungi",
-            "uppercase": "huruf_besar",
-            "lowercase": "huruf_kecil",
-            "capitalize": "huruf_besar_awal",
-            "plot": "plot",
-            "plotting_mode": "mod_plot",
-            "replace": "ganti"
-=======
             "press": "tekan"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }

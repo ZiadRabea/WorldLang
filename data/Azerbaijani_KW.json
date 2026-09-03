@@ -58,40 +58,12 @@
             "to_string": "sətirə_çevir",
             "keys": "açarlar",
             "abspath": "mütləq_yol",
-<<<<<<< HEAD
-            "generate": "yarat",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "qəbul_et",
             "write": "yaz",
             "click": "klik",
             "mouse_location": "siçan_yerləşimi",
             "set_location": "yerləşimi_təyin_et",
-<<<<<<< HEAD
-            "press": "bas",
-            "chdir": "qovluğu_dəyişdir",
-            "mkdir": "qovluq_yarat",
-            "processor": "prosessör",
-            "os": "əməliyyat_sistemi",
-            "visit": "ziyarət_et",
-            "architecture": "memarlıq",
-            "list_dir": "qovluq_siyahısı",
-            "is_dir": "qovluqdur",
-            "move": "köçür",
-            "system": "sistem",
-            "gen_random": "təsadüfi_yarat",
-            "cwd": "cari_iş_qovluğu",
-            "split": "böl",
-            "contains": "ehtiva_edir",
-            "uppercase": "böyük_hərflər",
-            "lowercase": "kiçik_hərflər",
-            "capitalize": "baş_hərfi_böyüt",
-            "plot": "qrafik",
-            "plotting_mode": "qrafik_rejimi",
-            "replace": "əvəz_et"
-=======
             "press": "bas"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }

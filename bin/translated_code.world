@@ -1,0 +1,9 @@
+# Factorial Calc
+var number = int(input("Enter a number:"))
+
+func factorial(number)
+    if number == 1 or number == 0 do return 1
+    return number * factorial(number - 1)
+end
+
+print(factorial(number))

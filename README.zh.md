@@ -10,7 +10,8 @@
   <a href="README.fr.md">Français</a> |
   <a href="README.es.md">Español</a> |
   <a href="README.de.md">Deutsch</a> |
-  <strong>中文</strong>
+  <strong>中文</strong> |
+  <a href="README.ja.md">日本語</a>
 </p>
 
 **一种多语言编程语言，允许您使用母体语言编写和运行代码。**
