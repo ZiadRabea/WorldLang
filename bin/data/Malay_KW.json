@@ -58,16 +58,12 @@
             "to_string": "ke_string",
             "keys": "kunci",
             "abspath": "laluan_mutlak",
-<<<<<<< HEAD
             "generate": "jana",
-=======
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
             "receive": "terima",
             "write": "tulis",
             "click": "klik",
             "mouse_location": "lokasi_tikus",
             "set_location": "set_lokasi",
-<<<<<<< HEAD
             "press": "tekan",
             "chdir": "tukar_direktori",
             "mkdir": "cipta_direktori",
@@ -89,9 +85,6 @@
             "plot": "plot",
             "plotting_mode": "mod_plot",
             "replace": "ganti"
-=======
-            "press": "tekan"
->>>>>>> 73c319938f8473c8cd03f83748ec871c7d4def19
         }
     ]
 }
