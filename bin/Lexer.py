@@ -18,9 +18,10 @@ DIGITS = '0123456789'
 
 
 class Lexer:
-    def __init__(self, fn, text):
+    def __init__(self, fn, text, translating=False):
         self.fn = fn
         self.text = text
+        self.translating = translating
         self.language = language if language else detect(self.text)
         print(self.language)
         self.data_dict, self.keywords = get_keywords_for(self.language)
@@ -36,7 +37,13 @@ class Lexer:
         tokens = []
 
         while self.current_char != None:
-            if self.current_char in ' \t':
+            if self.current_char == ' ':
+                if self.translating:
+                    tokens.append(Token(TT_SPACE, pos_start=self.pos))
+                self.advance()
+            elif self.current_char == '\t':
+                if self.translating:
+                    tokens.append(Token(TT_TAB, pos_start=self.pos))
                 self.advance()
             elif self.current_char == '#':
                 self.skip_comment()

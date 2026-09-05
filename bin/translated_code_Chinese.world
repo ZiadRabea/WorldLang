@@ -1,0 +1,8 @@
+变量 number = int(input("Enter a number:"))
+
+函数 factorial(number)
+    如果 number == 1 或者 number == 0 执行 返回 1
+    返回 number * factorial(number - 1)
+结束
+
+print(factorial(number))

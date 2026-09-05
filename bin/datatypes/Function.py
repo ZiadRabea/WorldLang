@@ -83,10 +83,11 @@ class BaseFunction(Value):
         return res.success(None)
       
 class BuiltInFunction(BaseFunction):
-    def __init__(self, name, data_dict=None, runner=None):
+    def __init__(self, name, data_dict=None, runner=None, translator=None):
         super().__init__(name)
         self.data_dict = data_dict
         self.runner = runner
+        self.translator = translator
 
     def execute(self, args):
         res = RTResult()
@@ -107,7 +108,7 @@ class BuiltInFunction(BaseFunction):
         raise Exception(f'No execute_{self.name} method defined')
 
     def copy(self):
-        copy = BuiltInFunction(self.name, self.data_dict, self.runner)
+        copy = BuiltInFunction(self.name, self.data_dict, self.runner, self.translator)
         copy.set_context(self.context)
         copy.set_pos(self.pos_start, self.pos_end)
         return copy
@@ -703,6 +704,39 @@ class BuiltInFunction(BaseFunction):
     execute_run.infinite = False
     execute_run.accept_none = False
 
+    def execute_translate(self, exec_ctx):
+        fn = exec_ctx.symbol_table.get("fn")
+        src_lang = exec_ctx.symbol_table.get("src_lang")
+        target_lang = exec_ctx.symbol_table.get("target_lang")
+
+        if not isinstance(fn, String):
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                "Second argument must be string",
+                exec_ctx
+            ))
+
+        fn = fn.value
+
+        try:
+            with open(fn, "r", encoding="UTF-8") as f:
+                script = f.read()
+        except Exception as e:
+            return RTResult().failure(RTError(
+                self.pos_start, self.pos_end,
+                f"Failed to load script \"{fn}\"\n" + str(e),
+                exec_ctx
+            ))
+        source = self.translator(fn, script, src_lang, target_lang)
+        
+        with open(f"{fn.replace(".world","")}_{target_lang}.world", "w", encoding="UTF-8") as f:
+            f.write(source)
+
+        return RTResult().success(String.none)
+
+    execute_translate.arg_names = ["fn", "src_lang", "target_lang"]
+    execute_translate.infinite = False
+    execute_translate.accept_none = False
 
     def execute_run_ext(self, exec_ctx):
         fn = exec_ctx.symbol_table.get("fn")
@@ -761,7 +795,7 @@ class BuiltInFunction(BaseFunction):
 
 global_symbol_table = SymbolTable()
 
-def create_global_symbol_table(data_dict, runner):
+def create_global_symbol_table(data_dict, runner, translator):
     
 
     BuiltInFunction.print = BuiltInFunction("print")
@@ -783,7 +817,7 @@ def create_global_symbol_table(data_dict, runner):
     BuiltInFunction.min = BuiltInFunction("min")
     BuiltInFunction.abs = BuiltInFunction("abs")
     BuiltInFunction.run = BuiltInFunction("run")
-
+    BuiltInFunction.translate = BuiltInFunction("translate", data_dict, runner, translator)
     BuiltInFunction.readfile = BuiltInFunction("readfile")
     BuiltInFunction.writefile = BuiltInFunction("writefile")
     BuiltInFunction.python = BuiltInFunction("python")
@@ -852,6 +886,7 @@ def create_global_symbol_table(data_dict, runner):
     global_symbol_table.set(f"{data_dict['cwd']}", BuiltInFunction.cwd)
     global_symbol_table.set(f"{data_dict['import']}", BuiltInFunction.importfile)
     global_symbol_table.set(f"world", BuiltInFunction.run)
+    global_symbol_table.set(f"translate", BuiltInFunction.translate)
     global_symbol_table.set(f"run", BuiltInFunction.run_ext)
 
     global_symbol_table.set(f"exit", BuiltInFunction.exit)
