@@ -1,5 +1,6 @@
 # Required dependencies
-requests
+requests # Fallback mechanism to install automatically when failing to import a module
+Keras, NTLK # Required for AI language detection mode
 
 # Optional dependencies for built-in libraries
 # Install these if you use the corresponding built-in features.
