@@ -14,7 +14,7 @@
   <a href="README.ja.md">日本語</a>
 </p>
 
-**A multilingual programming language that lets you write and run code in your native language.**
+**A multilingual programming language that lets you write, run, detect, and translate code in your native language.**
 
 <p align="center">
   <a href="https://github.com/ZiadRabea/WorldLang/blob/main/LICENSE">
@@ -33,6 +33,7 @@
 **Resources & Links:**
 
 * 📖 **[Official Documentation](https://ziadrabea.github.io/WorldDocs)**
+
   * 🚀 [Getting Started](https://ziadrabea.github.io/WorldDocs/installation.html)
   * 📚 [Language Reference](https://ziadrabea.github.io/WorldDocs/features.html)
   * 🌍 [Supported Languages](https://ziadrabea.github.io/WorldDocs/languages.html)
@@ -43,61 +44,72 @@
 * 🧩 **[WorldLangEN VS Code Extension](https://marketplace.visualstudio.com/items?itemName=worldlangteam.WorldEn)**
 * 👤 **Maintainer:** Ziad Rabea ([LinkedIn](https://www.linkedin.com/in/ziadrabea/) | [Email](mailto:zidr2005@gmail.com))
 
-WorldLang is an open-source interpreter built in Python that removes the language barrier in programming. Instead of memorizing English keywords, you write code using native syntax — Arabic, French, Japanese, and 18 more languages — and the engine tokenizes and executes it through a custom Lexer → Parser → Runtime pipeline.
+WorldLang is an open-source interpreter built in Python that removes the language barrier in programming. Instead of requiring programmers to write using English keywords, WorldLang allows code to be written using native-language syntax.
 
-> **Supported languages: 21** — Arabic, Chinese, Dutch, English, French, German, Indonesian, Italian, Japanese, Kazakh, Korean, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, Ukrainian, Urdu, Vietnamese.
+The interpreter supports a multilingual execution pipeline built around a custom **Lexer → Parser → Runtime** architecture, along with automatic language detection and integrated source-to-source code translation.
+
+> **Supported languages: 31** — Arabic, Azerbaijani, Chinese, Dutch, English, Finnish, French, German, Greek, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish, Latvian, Malay, Persian, Polish, Portuguese, Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, and Hindi.
 
 ---
 
 ## Table of Contents
 
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Code Example](#code-example)
-- [Built-in Libraries](#built-in-libraries)
-- [Architecture](#architecture)
-- [Language & Library Management](#language--library-management)
-- [Contributing](#contributing)
-- [License](#license)
+* [Features](#features)
+* [Requirements](#requirements)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Language Detection & Selection](#language-detection--selection)
+* [Code Translation](#code-translation)
+* [Code Example](#code-example)
+* [Built-in Libraries](#built-in-libraries)
+* [Architecture](#architecture)
+* [Language & Library Management](#language--library-management)
+* [Contributing](#contributing)
+* [License](#license)
 
 ---
 
 ## Features
 
-- **Native-language programming** — write code using the keywords of your chosen language.
-- **21 language packs** shipped in `data/` as JSON keyword tables.
-- **Dynamic keyword mapping** — the lexer maps native keywords to generic tokens on the fly.
-- **Full-featured interpreter** — variables, functions, recursion, loops, conditionals, lists, dicts, and arithmetic.
-- **Hardware & robotics** — serial communication for microcontrollers (e.g. Arduino).
-- **Speech** — text-to-speech and voice recognition.
-- **Built-in libraries** — image processing, plotting, random, filesystem, and more.
-- **Generative AI** — optional Google Gemini integration.
-- **Library & extension management** — fetch `.world` libraries and extensions directly from the network.
+* **Native-language programming** — write code using the keywords of your chosen language.
+* **31 supported language packs** with dynamically loaded keyword mappings.
+* **Hybrid language selection** — manually select a language or allow WorldLang to detect it automatically.
+* **AI-based language detection** — automatically detect the programming language syntax before lexing when no language is manually selected.
+* **Cross-language execution** — run files written in different supported languages without manually switching the global language.
+* **Integrated code translation** — translate WorldLang source files between supported languages.
+* **Dynamic keyword mapping** — the lexer maps native keywords to generic tokens on the fly.
+* **Full-featured interpreter** — variables, functions, recursion, loops, conditionals, lists, dictionaries, and arithmetic.
+* **Hardware & robotics** — serial communication for microcontrollers such as Arduino.
+* **Speech** — text-to-speech and voice recognition.
+* **Built-in libraries** — image processing, plotting, random utilities, filesystem tools, and more.
+* **Generative AI** — optional Google Gemini integration.
+* **Library & extension management** — fetch `.world` libraries and extensions directly from the network.
 
 ---
 
 ## Requirements
 
-- **Python 3.12+**
-- **Windows, macOS, or Linux**
+* **Python 3.12+**
+* **Windows, macOS, or Linux**
 
-Core packages needed (see [Installation](#installation)):
+Core packages:
 
-| Package | Used for |
-|---------|----------|
-| `requests` | Downloading language packs, libraries, and extensions |
-| `Pillow` | Image processing (`_builtins/Image.py`) |
-| `matplotlib` & `numpy` | Plotting (`_builtins/Graph.py`) |
-| `pyautogui` | Mouse/keyboard control (`_builtins/Controls.py`) |
-| `pyserial` | Serial/hardware communication (`_builtins/Serial.py`) |
-| `pyttsx3` | Text-to-speech (`_builtins/Speech.py`) |
-| `SpeechRecognition` | Voice recognition (`_builtins/Speech.py`) |
-| `google-generativeai` | Generative AI (`_builtins/GenAI.py`) |
-| `rich` | Markdown rendering for AI output (`_builtins/GenAI.py`) |
+| Package               | Used for                                                |
+| --------------------- | ------------------------------------------------------- |
+| `requests`            | Downloading language packs, libraries, and extensions   |
+| `numpy`               | AI language detection and numerical processing          |
+| `keras`               | AI-based language detection                             |
+| `nltk`                | Language detection preprocessing                        |
+| `Pillow`              | Image processing (`_builtins/Image.py`)                 |
+| `matplotlib`          | Plotting (`_builtins/Graph.py`)                         |
+| `pyautogui`           | Mouse/keyboard control (`_builtins/Controls.py`)        |
+| `pyserial`            | Serial/hardware communication (`_builtins/Serial.py`)   |
+| `pyttsx3`             | Text-to-speech (`_builtins/Speech.py`)                  |
+| `SpeechRecognition`   | Voice recognition (`_builtins/Speech.py`)               |
+| `google-generativeai` | Generative AI (`_builtins/GenAI.py`)                    |
+| `rich`                | Markdown rendering for AI output (`_builtins/GenAI.py`) |
 
-> Only `requests` is required for core functionality. The remaining packages are needed only for the specific optional built-in libraries listed above.
+> Only `requests` is required for the basic interpreter. `Keras`, `NLTK`, and `NumPy` are required for AI-based automatic language detection. Other packages are required only for their corresponding optional built-in libraries.
 
 ---
 
@@ -110,16 +122,18 @@ cd WorldLang
 
 # 2. (Recommended) Create and activate a virtual environment
 python -m venv venv
+
 # Windows:
 venv\Scripts\activate
+
 # macOS / Linux:
 source venv/bin/activate
 
 # 3. Install dependencies
-pip install requests Pillow matplotlib numpy pyautogui pyserial pyttsx3 SpeechRecognition rich
+pip install requests numpy keras nltk Pillow matplotlib pyautogui pyserial pyttsx3 SpeechRecognition rich
 ```
 
-To enable the AI features, you additionally need:
+To enable Google Gemini AI features:
 
 ```bash
 pip install google-generativeai
@@ -137,27 +151,122 @@ python bin/World.py
 
 A prompt appears:
 
-```
+```text
 World >>
 ```
 
-Type a program and press Enter to execute it. Special commands at the prompt:
+Type a program and press Enter to execute it.
 
-| Command    | Action                                                        |
-|------------|---------------------------------------------------------------|
-| `libman`   | Run the library manager (download `.world` libraries)         |
-| `langman`  | Run the language manager (download/switch language packs)     |
-| `extman`   | Run the extension manager (download extensions)               |
+### Special Commands
 
-`WorldLang` is Arabic-by-default. The Arabic keywords are loaded from `bin/keywords.json`. Switch or add languages via the `langman` manager.
+| Command       | Action                                                               |
+| ------------- | -------------------------------------------------------------------- |
+| `world()`     | Run WorldLang Source Files                                           |
+| `libman`      | Run the library manager and download `.world` libraries              |
+| `langman`     | Run the language manager and download language packs                 |
+| `extman`      | Run the extension manager and download extensions                    |
+| `setlang`     | Manually select a programming language or enable automatic detection |
+| `translate()` | Translate WorldLang source code between supported languages          |
+
+---
+
+## Language Detection & Selection
+
+WorldLang supports a **hybrid language-selection system**.
+
+You can explicitly select the language you want to use, or leave the language unset and allow the interpreter to automatically detect the language of the source code.
+
+### Manual Language Selection
+
+Use:
+
+```text
+setlang
+```
+
+Example:
+
+```text
+setlang -> ArabicKW
+```
+
+This manually configures WorldLang to use the Arabic keyword table.
+
+### Automatic Language Detection
+
+Leave the language input blank:
+
+```text
+setlang -> ""
+```
+
+This enables automatic language detection.
+
+When automatic detection is enabled, WorldLang analyzes the source code and determines the appropriate language during the lexing/tokenizing phase.
+
+This allows code and imported modules written in different supported languages to run **without manually switching the active language beforehand**.
+
+### AI Detection Modules
+
+The automatic language detection system uses:
+
+* `Keras`
+* `NLTK`
+* `NumPy`
+
+The detection system is optional when manually selecting a language with `setlang`.
+
+---
+
+## Code Translation
+
+WorldLang includes an integrated **cross-language code translator**.
+
+Instead of translating code using simple text replacement, the translator processes the source through a structured multilingual pipeline:
+
+```text
+Source
+   ↓
+Lexer
+   ↓
+Translator
+   ↓
+DeLexer
+   ↓
+Translated Source
+```
+
+The source code is first lexed into language-independent representations. The translator then maps those representations to the target language before the **DeLexer** reconstructs valid WorldLang source code.
+
+### Translate Command
+
+```text
+translate(filename.world, source_language, target_language)
+```
+
+Example:
+
+```text
+translate("factorial.world", "English", "Chinese")
+```
+
+WorldLang automatically generates a translated source file using the target language.
+
+For example:
+
+```text
+factorial_Chinese.world
+```
+
+This makes it possible to write a WorldLang program in one language and convert the same source code into another supported language.
 
 ---
 
 ## Code Example
 
-A recursive **factorial calculator** written entirely with native Arabic keywords:
+The following factorial calculator can be written in Arabic:
 
-```world
+```worldlang
 # حاسبة المضروب
 متغير الرقم = عدد_صحيح(استقبل("أدخل رقماً"))
 
@@ -166,22 +275,24 @@ A recursive **factorial calculator** written entirely with native Arabic keyword
     ارجاع رقم * مضروب(رقم - 1)
 نهاية
 
-طباعة(مضروب(5))
+طباعة(مضروب(الرقم))
 ```
 
-How the lexer reads it:
+The same program can also be written in English:
 
-| Arabic keyword | Meaning |
-|----------------|---------|
-| `متغير`       | `var` |
-| `دالة`        | `func` |
-| `اذا`         | `if` |
-| `نفذ`         | `do` |
-| `ارجاع`       | `return` |
-| `نهاية`       | `end` |
-| `طباعة`       | `print` |
-| `عدد_صحيح`    | `int` |
-| `استقبل`      | `input` |
+```worldlang
+# Factorial Calculator
+var number = int(input("Enter a number:"))
+
+func factorial(number)
+    if number == 1 or number == 0 do return 1
+    return number * factorial(number - 1)
+end
+
+print(factorial(number))
+```
+
+When automatic detection is enabled, WorldLang can determine which supported language the source code uses without requiring a manual language change.
 
 ---
 
@@ -189,45 +300,82 @@ How the lexer reads it:
 
 The interpreter exposes several Python-backed libraries, registered as native WorldLang functions:
 
-| Library | Purpose | Backing module |
-|---------|---------|----------------|
-| `String` | `split`, `uppercase`, `lowercase`, `contains`, `replace`, ... | `_builtins/String.py` |
-| `Random` | Random number generation | `_builtins/Random.py` |
-| `os` | Filesystem: `chdir`, `mkdir`, `list_dir`, `move`, `system`, ... | `_builtins/os.py` |
-| `Image` | Load/save images (convert to/from RGB lists) | `_builtins/Image.py` |
-| `Graph` | `plot`, `scatter`, `bar` charting | `_builtins/Graph.py` |
-| `Controls` | Mouse/keyboard automation | `_builtins/Controls.py` |
-| `Serial` | Hardware/Arduino serial communication (`send`/`receive`) | `_builtins/Serial.py` |
-| `Speech` | Text-to-speech and voice recognition | `_builtins/Speech.py` |
-| `GenAI` | Generative AI via Google Gemini | `_builtins/GenAI.py` |
+| Library    | Purpose                                                                    | Backing module          |
+| ---------- | -------------------------------------------------------------------------- | ----------------------- |
+| `String`   | `split`, `uppercase`, `lowercase`, `contains`, `replace`, ...              | `_builtins/String.py`   |
+| `Random`   | Random number generation                                                   | `_builtins/Random.py`   |
+| `os`       | Filesystem operations: `chdir`, `mkdir`, `list_dir`, `move`, `system`, ... | `_builtins/os.py`       |
+| `Image`    | Load/save images and convert to/from RGB lists                             | `_builtins/Image.py`    |
+| `Graph`    | `plot`, `scatter`, `bar` charting                                          | `_builtins/Graph.py`    |
+| `Controls` | Mouse/keyboard automation                                                  | `_builtins/Controls.py` |
+| `Serial`   | Hardware/Arduino serial communication (`send`/`receive`)                   | `_builtins/Serial.py`   |
+| `Speech`   | Text-to-speech and voice recognition                                       | `_builtins/Speech.py`   |
+| `GenAI`    | Generative AI via Google Gemini                                            | `_builtins/GenAI.py`    |
 
 ---
 
 ## Architecture
 
-WorldLang is a **tree-walking interpreter**. Source code passes through a three-stage pipeline:
+WorldLang is a **tree-walking interpreter** with an extended multilingual processing architecture.
 
+### Code Execution Pipeline
+
+```text
+Source Code
+    ↓
+Language Selection / AI Detection
+    ↓
+Lexer
+    ↓
+Tokens
+    ↓
+Parser
+    ↓
+Abstract Syntax Tree
+    ↓
+Runtime
+    ↓
+Result
 ```
-1. Lexer  ──→  Tokens (native keywords mapped to generic tokens)
-2. Parser ──→  AST  (language-agnostic Abstract Syntax Tree)
-3. Runtime ──→ Result (interpreter walks the AST, managing symbols & scope)
+
+The language detection layer allows WorldLang to dynamically determine which keyword table should be used before tokenization when no language has been manually selected.
+
+### Code Translation Pipeline
+
+```text
+Source
+   ↓
+Lexer
+   ↓
+Language-Independent Representation
+   ↓
+Translator
+   ↓
+DeLexer
+   ↓
+Translated Source
 ```
 
-**Key components in `bin/`:**
+This architecture allows WorldLang to execute and translate multilingual source code while keeping the underlying interpreter pipeline language-independent.
 
-| File | Role |
-|------|------|
-| `World.py` | Entry point — REPL shell |
-| `Lexer.py` | Tokenizer; dynamically maps keywords from the active language table |
-| `Parser.py` | Grammar rules → AST generation |
-| `Interpreter.py` | Executes the AST and provides the standard library |
-| `Tokens.py` | Token types; loads keyword tables (`keywords.json`) |
-| `Errors.py` | Error types (`IllegalChar`, `Syntax`, `Runtime`) |
-| `RT_result.py` | Runtime results, context, and symbol tables |
-| `datatypes/` | `Value`, `Number`, `String`, `List`, `Dict`, `Function` |
-| `_builtins/` | Python-backed standard libraries |
+### Key Components
 
-The keyword tables are plain JSON files under `data/` (one per language, e.g. `Arabic_KW.json`), which keep the engine's language support fully data-driven.
+| File / Component | Role                                                                              |
+| ---------------- | --------------------------------------------------------------------------------- |
+| `World.py`       | Entry point and REPL shell                                                        |
+| `Lexer.py`       | Tokenizer; dynamically maps keywords from the detected or selected language table |
+| `Parser.py`      | Grammar rules and AST generation                                                  |
+| `Interpreter.py` | Executes the AST and provides the standard library                                |
+| `Tokens.py`      | Token types and keyword handling                                                  |
+| `Translator.py`  | Converts tokenized source representations between supported languages             |
+| `DeLexer.py`     | Reconstructs source code using the target language's keyword mappings             |
+| `Errors.py`      | Error types (`IllegalChar`, `Syntax`, `Runtime`)                                  |
+| `RT_result.py`   | Runtime results, contexts, and symbol tables                                      |
+| `datatypes/`     | `Value`, `Number`, `String`, `List`, `Dict`, `Function`                           |
+| `_builtins/`     | Python-backed standard libraries                                                  |
+| `data/`          | Language keyword tables and multilingual language resources                       |
+
+The keyword tables are data-driven JSON files, allowing additional languages to be added without rewriting the core interpreter grammar.
 
 ---
 
@@ -235,11 +383,13 @@ The keyword tables are plain JSON files under `data/` (one per language, e.g. `A
 
 WorldLang can fetch resources from the network at runtime:
 
-- **`langman`** — download keyword tables for additional languages into `data/`.
-- **`libman`** — download `.world` libraries (e.g. `math.world`, `json_ar.world`).
-- **`extman`** — download extensions into `extensions/` (e.g. the voice-coding extension `vcode.world`).
+* **`langman`** — download keyword tables for additional languages into `data/`.
+* **`libman`** — download `.world` libraries.
+* **`extman`** — download extensions into `extensions/`.
+* **`setlang`** — manually configure a language or enable AI-based automatic language detection.
+* **`translate()`** — convert WorldLang source files between supported languages.
 
-> These features require an internet connection and access to the remote resource repository referenced by the interpreter.
+> Language detection and translation operate on the multilingual keyword architecture, allowing different language packs to share the same underlying interpreter.
 
 ---
 
@@ -247,11 +397,12 @@ WorldLang can fetch resources from the network at runtime:
 
 WorldLang is open-source and community-driven. Contributions are welcome in many forms:
 
-- **Language contributors** — add or improve localization tables (`data/*_KW.json`).
-- **Compiler developers** — improve the lexer, parser, runtime, and standard library.
-- **Hardware developers** — expand hardware and robotics integrations.
-- **Testers** — discover bugs and improve reliability.
-- **Everyone** — report issues, improve documentation, and share ideas.
+* **Language contributors** — add or improve localization and keyword tables.
+* **Compiler developers** — improve the lexer, parser, translator, DeLexer, runtime, and standard library.
+* **AI developers** — improve automatic language detection models and preprocessing.
+* **Hardware developers** — expand hardware and robotics integrations.
+* **Testers** — discover bugs and improve reliability.
+* **Everyone** — report issues, improve documentation, and share ideas.
 
 To contribute:
 
