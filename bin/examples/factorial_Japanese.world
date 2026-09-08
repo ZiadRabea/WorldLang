@@ -1,0 +1,8 @@
+へんすう number = せいすう(にゅうりょく("Enter a number:"))
+
+かんすう factorial(number)
+    いう number == 1 また number == 0 する もどる 1
+    もどる number * factorial(number - 1)
+おわり
+
+ひょうじする(factorial(number))

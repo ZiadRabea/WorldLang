@@ -427,6 +427,51 @@
       ],
       "responses": ["Uzbek_KW"],
       "context_set": ""
+    },{
+      "tag": "Swedish_KW",
+      "patterns": [
+        "variabel", "och", "eller", "inte", "om", "annars_om", "annars", "från", "till", "steg", 
+        "medan", "funktion", "gör", "slut", "returnera", "fortsätt", "avbryt", "skriv_ut", "läs_heltal", "läs_in", 
+        "är_heltal", "är_sträng", "är_lista", "är_ordbok", "är_funktion", "heltal", "flyttal", "förväntad", "identifierare", "tom", 
+        "sant", "falskt", "rensa", "lägg_till", "utöka", "ta_bort", "längd", "ny_rad", "läs_fil", "skriv_fil", 
+        "importera", "summa", "max", "min", "absolutbelopp", "sträng", "ladda", "spara_bild", "skicka", "kör", 
+        "lyssna", "tala", "utvärdera", "sov", "till_sträng", "nycklar", "absolut_sökväg", "generera", "ta_emot", "skriv", 
+        "klicka", "muspekare_position", "sätt_position", "tryck", "ändra_sökväg", "skapa_mapp", "processor", "operativsystem", "besök", "arkitektur", 
+        "visa_mapp", "är_mapp", "flytta", "system", "slumpa_tal", "aktuell_sökväg", "dela", "innehåller", "versaler", "gemener", 
+        "stor_begynnelsebokstav", "diagram", "diagramläge", "ersätt"
+      ],
+      "responses": ["Swedish_KW"],
+      "context_set": ""
+    },{
+      "tag": "Indian_KW",
+      "patterns": [
+        "चर", "और", "या", "नहीं", "अगर", "अन्य_अगर", "अन्यथा", "से", "तक", "चरण", 
+        "जबतक", "कार्य", "करो", "अंत", "वापस", "जारी_रखो", "रोकें", "छापें", "पूर्णांक_इनपुट", "इनपुट", 
+        "क्या_पूर्णांक", "क्या_पाठ", "क्या_सूची", "क्या_शब्दकोश", "क्या_कार्य", "पूर्णांक", "दशमलव", "अपेक्षित", "पहचानकर्ता", "रिक्त", 
+        "सत्य", "असत्य", "साफ", "जोड़ें", "विस्तारित_करें", "निकालें", "लंबाई", "नई_पंक्ति", "फ़ाइल_पढ़ें", "फ़ाइल_लिखें", 
+        "आयात", "योग", "अधिकतम", "न्यूनतम", "निरपेक्ष", "पाठ", "लोड", "चित्र_सहेजें", "भेजें", "चलाएँ", 
+        "सुनें", "बोलें", "मूल्यांकन", "रुकें", "पाठ_में_बदलें", "कुंजियाँ", "पूर्ण_पथ", "उत्पन्न_करें", "प्राप्त_करें", "लिखें", 
+        "क्लिक", "माउस_स्थान", "स्थान_सेट_करें", "दबाएँ", "निर्देशिका_बदलें", "निर्देशिका_बनाएँ", "प्रोसेसर", "ऑपरेटिंग_सिस्टम", "जाएँ", "वास्तुकला", 
+        "निर्देशिका_सूची", "क्या_निर्देशिका", "स्थानांतरित_करें", "सिस्टम", "यादृच्छिक_बनाएँ", "वर्तमान_निर्देशिका", "विभाजित_करें", "शामिल_है", "बड़े_अक्षर", "छोटे_अक्षर", 
+        "पहला_अक्षर_बड़ा", "ग्राफ", "ग्राफ_मोड", "बदलें"
+      ],
+      "responses": ["Hindi_KW"],
+      "context_set": ""
+    },{
+      "tag": "Finnish_KW",
+      "patterns": [
+        "muuttuja", "ja", "tai", "ei", "jos", "muuten_jos", "muuten", "väliltä", "asti", "askel", 
+        "kunnes", "funktio", "tee", "loppu", "palauta", "jatka", "keskeytä", "tulosta", "lue_kokonaisluku", "lue", 
+        "onko_kokonaisluku", "onko_merkkijono", "onko_lista", "onko_sanakirja", "onko_funktio", "kokonaisluku", "liukuluku", "odotettu", "tunniste", "tyhjä", 
+        "tosi", "epätosi", "tyhjennä", "lisää", "laajenna", "poista", "pituus", "uusi_rivi", "lue_tiedosto", "kirjoita_tiedosto", 
+        "tuo", "summa", "maksimi", "minimi", "itseisarvo", "merkkijono", "lataa", "tallenna_kuva", "lähetä", "suorita", 
+        "kuuntele", "puhu", "laske", "nuku", "merkkijonoksi", "avaimet", "absoluuttinen_polku", "luo", "vastaanota", "kirjoita", 
+        "napsauta", "hiiren_sijainti", "aseta_sijainti", "paina", "vaihda_hakemisto", "luo_hakemisto", "prosessori", "käyttöjärjestelmä", "vieraile", "arkkitehtuuri", 
+        "listaa_hakemisto", "onko_hakemisto", "siirrä", "järjestelmä", "arvo_satunnaisluku", "nykyinen_hakemisto", "jaat", "sisältää", "suuraakkoset", "pienaakkoset", 
+        "kapitalisoi", "kaavio", "kaaviotila", "korvaa"
+      ],
+      "responses": ["Finnish_KW"],
+      "context_set": ""
     }
   ]
 }

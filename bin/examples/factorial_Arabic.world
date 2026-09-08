@@ -1,0 +1,8 @@
+متغير number = عدد_صحيح(استقبل("Enter a number:"))
+
+دالة factorial(number)
+    اذا number == 1 او number == 0 نفذ ارجاع 1
+    ارجاع number * factorial(number - 1)
+نهاية
+
+طباعة(factorial(number))

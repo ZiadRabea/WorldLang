@@ -1,0 +1,8 @@
+चर number = पूर्णांक(इनपुट("Enter a number:"))
+
+कार्य factorial(number)
+    अगर number == 1 या number == 0 करो वापस 1
+    वापस number * factorial(number - 1)
+अंत
+
+छापें(factorial(number))

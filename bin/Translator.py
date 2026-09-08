@@ -61,15 +61,16 @@ class Translate:
     def process_identifiers(self):
         tok_type = TT_IDENTIFIER
         tok_value = self.current_tok.value
-
         self.advance()
-
+        # print(selcf.current_tok.type)
         if self.current_tok.type == TT_LPAREN:
             try:
-                tok_value = self.target_dict[self.flipped_dict[self.current_tok.value]]
+                
+                tok_value = self.target_dict[self.flipped_dict[tok_value]]
             except:
+                print("Failed")
                 pass
-
+        # print(tok_value)
         return Token(tok_type, tok_value)
             
     

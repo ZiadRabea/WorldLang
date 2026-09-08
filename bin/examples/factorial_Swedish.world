@@ -1,0 +1,8 @@
+variabel number = heltal(läs_in("Enter a number:"))
+
+funktion factorial(number)
+    om number == 1 eller number == 0 gör returnera 1
+    returnera number * factorial(number - 1)
+slut
+
+skriv_ut(factorial(number))

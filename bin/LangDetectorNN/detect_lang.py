@@ -20,7 +20,7 @@ def detect(text):
     
     input_data = np.array([bow], dtype=np.float32) 
 
-    results = model.predict(input_data)
+    results = model.predict(input_data, verbose=0)
     results_index = np.argmax(results)
 
     tag = labels[results_index]

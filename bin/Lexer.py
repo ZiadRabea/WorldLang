@@ -23,7 +23,7 @@ class Lexer:
         self.text = text
         self.translating = translating
         self.language = language if language else detect(self.text)
-        print(self.language)
+        # print(self.language)
         self.data_dict, self.keywords = get_keywords_for(self.language)
         self.pos = Position(-1, 0, -1, fn, text)
         self.current_char = None
