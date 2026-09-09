@@ -68,7 +68,7 @@ class Translate:
                 
                 tok_value = self.target_dict[self.flipped_dict[tok_value]]
             except:
-                print("Failed")
+                # print("Failed")
                 pass
         # print(tok_value)
         return Token(tok_type, tok_value)
